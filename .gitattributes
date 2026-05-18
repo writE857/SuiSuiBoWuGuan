@@ -1,0 +1,2 @@
+Assets/Fix/Tools/Editor/Ext/Audio/Plugins/FFMpegCore/ffprobe.exe filter=lfs diff=lfs merge=lfs -text
+Assets/Fix/Tools/Editor/Ext/Audio/Plugins/FFMpegCore/ffmpeg.exe filter=lfs diff=lfs merge=lfs -text

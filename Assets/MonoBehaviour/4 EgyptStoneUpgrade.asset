@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7561e84710ecb1b96743cd4a2aae77d6, type: 3}
+  m_Name: 4 EgyptStoneUpgrade
+  m_EditorClassIdentifier:
+  ID: EgyptStoneUpgrade
+  DisplayName: 埃及石块
+  Description: +{0:0} 埃及石块最高矿物阶级
+  MaxLevel: 2
+  BasePrice: 30
+  ExtraPricePerLevel: 25
+  Icon: {fileID: 21300000, guid: 3d9d94f7dd6fa434fb9ded0ec0f2d014, type: 2}
+  BaseAmount: 0
+  IncreasePerLevel: 1
+  DebugSumPrice: 85
+  IMPLEMENTED: 0

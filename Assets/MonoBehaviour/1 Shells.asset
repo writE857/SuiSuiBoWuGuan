@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdb60690fc49a8be694861a23a681bc, type: 3}
+  m_Name: 1 Shells
+  m_EditorClassIdentifier:
+  DisplayName: 海床
+  GROUPID: SHELLS
+  Barcode: {fileID: 21300000, guid: b3d1a16a58d77fe44a13868b397a8d89, type: 2}
+  Artifacts:
+  - {fileID: 114243736805655561, guid: fcc30ffd37c2d6b4881ca68bb0b57f94, type: 2}
+  - {fileID: 114243736805655561, guid: 93cb0ccc6894b9f46bcc85bb7cfd8a84, type: 2}
+  - {fileID: 114243736805655561, guid: 335d06d33d5e3674694583f5e6463503, type: 2}
+  RequiredLevels: 000000000200000003000000
+  HighestLoot: {fileID: 114703437598541787, guid: 63b0629012b1d834cbab0f3c5636cb56, type: 2}
+  OnEveryArtifactFoundAchievement: {fileID: 11400000, guid: 83df94ab5ab7cc94eb2e196575100d5e, type: 2}
+  BaseHP: 10
+  HPIncrement: 0
+  HPOverrides:
+  BasePrice: 100
+  PriceExponent: 1
+  PriceOverrides:
+  prefab: {fileID: 114500280722557785, guid: b76fc83150bad9140a3bbe7b8a10f5c8, type: 2}
+  Material: {fileID: 2100000, guid: 5aea50f6b3ce5c147903447fd5426eb0, type: 2}
+  ItemCountTester: 0
+  CountPerArtifactNeeded: 0100000002000000020000000400000004000000080000000800000010000000100000002000000020000000
+  CountPerGroupNeeded: 06000000090000000c0000000c000000180000001800000030000000300000006000000060000000
+  SumsPerArtifactNeeded: 010000000300000005000000090000000d000000150000001d0000002d0000003d0000005d0000007d000000
+  SumsPerGroupNeeded: 060000000f0000001b000000270000003f0000005700000087000000b70000001701000077010000
+  MinLootTierSkill: {fileID: 0}
+  MaxLootTierSkill: {fileID: 11400000, guid: 9b7c8704e6c11504881676e109cf0aa7, type: 2}
+  IncomeExtraSkill: {fileID: 11400000, guid: 3788c0c4f8b230843b7dbef994bf36a3, type: 2}
+  MineralCount: 03000000040000000400000005000000050000000600000006000000070000000800000009000000
+  startScale: {x: 0.85, y: 0.6, z: 0.85}
+  endScale: {x: 1.15, y: 1.4, z: 1.15}
+  Description: 螃蟹的家、人类的艺术品，也是美人鱼的衣料和食物。
+  CoinChanceMultiplier: 0.6
+  TicketChanceMultiplier: 0.6
+  ExtraMinLootCount: 0
+  ExtraMaxLootCount: 0
+  PriorityIndex: 1

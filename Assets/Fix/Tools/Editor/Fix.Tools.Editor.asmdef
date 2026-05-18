@@ -1,0 +1,39 @@
+{
+    "name": "Fix.Tools.Editor",
+    "references": [
+        "Fix.Base",
+        "Fix.Tools",
+        "Unity.2D.Sprite.Editor",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "FFMpegCore.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.2d.sprite",
+            "expression": "",
+            "define": "USE_UNITY_2D_SPRITE"
+        },
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "",
+            "define": "USE_UNITY_INPUTSYSTEM"
+        },
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "",
+            "define": "USE_UNITY_URP"
+        }
+    ],
+    "noEngineReferences": false
+}

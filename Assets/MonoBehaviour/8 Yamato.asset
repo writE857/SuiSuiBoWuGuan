@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdb60690fc49a8be694861a23a681bc, type: 3}
+  m_Name: 8 Yamato
+  m_EditorClassIdentifier:
+  DisplayName: 大和之魂
+  GROUPID: YAMATO
+  Barcode: {fileID: 21300000, guid: 5fb34c36b5cc4c5418502c6f77a825ed, type: 2}
+  Artifacts:
+  - {fileID: 114243736805655561, guid: d93e49ebea0075b4d87ac3b747173f37, type: 2}
+  - {fileID: 114243736805655561, guid: a9f2131623350f34eb36975bd7afb65a, type: 2}
+  - {fileID: 114243736805655561, guid: cb23d94f45f69bf42af44fba8f41b284, type: 2}
+  RequiredLevels: 000000000200000003000000
+  HighestLoot: {fileID: 114099118695303065, guid: bb61deacf020f0d408c1537c296b187c, type: 2}
+  OnEveryArtifactFoundAchievement: {fileID: 11400000, guid: 53804b7b04d89e040b297a3a4ad77de6, type: 2}
+  BaseHP: 163840
+  HPIncrement: 0
+  HPOverrides:
+  BasePrice: 182000000
+  PriceExponent: 1
+  PriceOverrides:
+  prefab: {fileID: 114500280722557785, guid: b76fc83150bad9140a3bbe7b8a10f5c8, type: 2}
+  Material: {fileID: 2100000, guid: 8c0139087c0897e4ea751a29e421c929, type: 2}
+  ItemCountTester: 1
+  CountPerArtifactNeeded: 0100000002000000020000000400000004000000080000000800000010000000100000002000000020000000
+  CountPerGroupNeeded: 06000000090000000c0000000c000000180000001800000030000000300000006000000060000000
+  SumsPerArtifactNeeded: 010000000300000005000000090000000d000000150000001d0000002d0000003d0000005d0000007d000000
+  SumsPerGroupNeeded: 060000000f0000001b000000270000003f0000005700000087000000b70000001701000077010000
+  MinLootTierSkill: {fileID: 11400000, guid: 60363a5e41da14d4a9f3ab61e3ad171c, type: 2}
+  MaxLootTierSkill: {fileID: 0}
+  IncomeExtraSkill: {fileID: 0}
+  MineralCount: 1800000019000000190000001a0000001a0000001b0000001b0000001c0000001d0000001e000000
+  startScale: {x: 0.85, y: 0.6, z: 0.85}
+  endScale: {x: 1.15, y: 1.4, z: 1.15}
+  Description: 从古坟到江户，日本文化与传统的缩影。
+  CoinChanceMultiplier: 1
+  TicketChanceMultiplier: 1
+  ExtraMinLootCount: 0
+  ExtraMaxLootCount: 0
+  PriorityIndex: 8

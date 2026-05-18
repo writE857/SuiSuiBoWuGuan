@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1307931743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e3fb8f4e7f4ecbb98c3aa1c473f221, type: 3}
+  m_Name: BG Music
+  m_EditorClassIdentifier:
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: 1233149941, guid: 508eeb3b4a1fbd4459a4d7d3eceb020a, type: 2}
+  - {fileID: 1233149941, guid: 9cc218db2ea45ae48b422d0ff4755acc, type: 2}
+  - {fileID: 1233149941, guid: 7864c9bfa3f25644c934b2dc78874ecf, type: 2}
+  - {fileID: 1233149941, guid: 4039f1a470a131b4a9d08ae23a43e7b2, type: 2}
+  - {fileID: 1233149941, guid: c3acbc3b835b5ad41bb042076d45a57c, type: 2}
+  - {fileID: 1233149941, guid: 7420fe632954dd645b6490dc40f2abde, type: 2}
+  - {fileID: 1233149941, guid: 320b9a3a6f7ed0b4c8d32c0d993f570c, type: 2}
+  - {fileID: 1233149941, guid: 44b4084fedaa21644a5722127fa98aaf, type: 2}
+  - {fileID: 1233149941, guid: b8f3e59731473e640a19122e085c3fe8, type: 2}
+  - {fileID: 1233149941, guid: 6865780eb7f3c25459fa0eaccc0a54c6, type: 2}
+  - {fileID: 1233149941, guid: f763a1ff78841da4b96cb163414c4a49, type: 2}
+  m_AvoidRepeatingLast: 3
+  m_PlaybackMode: 1
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0

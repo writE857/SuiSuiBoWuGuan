@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Master
+  m_OutputGroup: {fileID: 0}
+  m_MasterGroup: {fileID: 24300004}
+  m_Snapshots:
+  - {fileID: 24500012}
+  m_StartSnapshot: {fileID: 24500012}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_ExposedParameters:
+  - guid: 51eba57fdbd0ecd438b8b0aa96007ec9
+    name: mposwoH
+  - guid: dfe9b290f49649c4c937fa35cc4fe844
+    name: tuRmmTJ
+  m_AudioMixerGroupViews:
+  - guids:
+    - 5139f99080285cc4790e157b5706becc
+    - b9aeffea43a2dfb44ad88522f8ec82f1
+    - 295b87190bec134489df29cb270afdf6
+    name: View
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 24500012}
+--- !u!243 &24300000
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: b9aeffea43a2dfb44ad88522f8ec82f1
+  m_Children: []
+  m_Volume: dfe9b290f49649c4c937fa35cc4fe844
+  m_Pitch: de4d94c33ad506a48bf9d21ce19c2ef6
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 24400002}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &24300004
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 5139f99080285cc4790e157b5706becc
+  m_Children:
+  - {fileID: 24300000}
+  - {fileID: 24300008}
+  m_Volume: 45d5ea261cecb7940ba849b48e588670
+  m_Pitch: d41fe65a400e1674dbc8f0c354c23d87
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 24400006}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &24300008
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 295b87190bec134489df29cb270afdf6
+  m_Children: []
+  m_Volume: 51eba57fdbd0ecd438b8b0aa96007ec9
+  m_Pitch: df50b17fb626f0a45a4d6e00e906d429
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 24400010}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400002
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: ee6c0db762549894da68b7a7e5869cb3
+  m_EffectName: Attenuation
+  m_MixLevel: 70bb2fe5a5012314c8b959588e1d9fad
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &24400006
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 8a8f318d158c1d344a8c4ffd321268fd
+  m_EffectName: Attenuation
+  m_MixLevel: b9f95fa566ff7464db70a68294db7cff
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &24400010
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 2315fa7171d24e94f952ee1e1fc3836c
+  m_EffectName: Attenuation
+  m_MixLevel: b2fb2baad4e3b914fb0c6bfbffafb92b
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &24500012
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snapshot
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 017523494f891804f97ece23cd48e099
+  m_FloatValues:
+    dfe9b290f49649c4c937fa35cc4fe844: 0
+    de4d94c33ad506a48bf9d21ce19c2ef6: 1
+    45d5ea261cecb7940ba849b48e588670: 0
+    d41fe65a400e1674dbc8f0c354c23d87: 1
+    df50b17fb626f0a45a4d6e00e906d429: 1
+    51eba57fdbd0ecd438b8b0aa96007ec9: 0
+  m_TransitionOverrides: {}

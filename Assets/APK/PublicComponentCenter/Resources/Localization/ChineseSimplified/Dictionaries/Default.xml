@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<Dictionaries>
+	<Dictionary Language="ChineseSimplified">
+		<String Key="Game.Name" Value="测试游戏名称" />
+		<String Key="Game.Description" Value="公共组件中心 演示程序" />
+		<String Key="Menu.Title" Value="Menu_Title_Chinese" />
+		<String Key="Menu.StartButton" Value="开始" />
+		<String Key="Menu.SettingButton" Value="设置" />
+		<String Key="Menu.QuitButton" Value="退出" />
+		<String Key="Menu.ChangeTextButton" Value="切换文本" />
+		<String Key="Dialog.ConfirmButton" Value="确定" />
+		<String Key="Dialog.CancelButton" Value="取消" />
+		<String Key="Dialog.OtherButton" Value="" />
+		<String Key="Setting.Title" Value="设置" />
+		<String Key="Setting.Language" Value="语言" />
+		<String Key="Setting.Language.English" Value="英语" />
+		<String Key="Setting.Language.ChineseSimplified" Value="简体中文" />
+		<String Key="Setting.LanguageTips" Value="更改语言需要重启游戏" />
+		<String Key="Custom.Empty" Value="" />
+		<String Key="Custom.Test0" Value="测试0" />
+		<String Key="Custom.Test1" Value="测试1" />
+		<String Key="Custom.Test2" Value="测试2" />
+		<String Key="Custom.Test3" Value="测试3" />
+		<String Key="Module.Event" Value="Demo-事件" />
+		<String Key="Module.Ad" Value="Demo-广告" />
+		<String Key="Module.Setting" Value="Demo-设置" />
+		<String Key="Custom.Back" Value="返回" />
+		<String Key="Custom.AdText"
+		        Value="按键——功能| P——支付| I——插屏| B——Banner | O——游戏结束| R——激励视频 | G——插屏视频 | U——补单| M——更多精彩| Q——退出游戏" />
+		<String Key="Custom.EventText" Value="按键——功能| Space——发送事件" />
+		<String Key="Custom.SettingText" Value="详见Demo_Settings物体上的Demo_Setting脚本内容" />
+	</Dictionary>
+</Dictionaries>

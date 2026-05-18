@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdb60690fc49a8be694861a23a681bc, type: 3}
+  m_Name: 5 African
+  m_EditorClassIdentifier:
+  DisplayName: 非洲传承
+  GROUPID: AFRICA
+  Barcode: {fileID: 21300000, guid: e6b7f278cce4a06409d7eff1f4027fed, type: 2}
+  Artifacts:
+  - {fileID: 114243736805655561, guid: 7b653519f912beb40ac72566f84bc7f2, type: 2}
+  - {fileID: 114243736805655561, guid: 1d47c06b643055744a5f6054d50c1eab, type: 2}
+  - {fileID: 114243736805655561, guid: 6d370d9fe4e05624fa8749703c9b7444, type: 2}
+  RequiredLevels: 000000000200000003000000
+  HighestLoot: {fileID: 114099118695303065, guid: cf9cf229564cd934abfe0545139b2f9f, type: 2}
+  OnEveryArtifactFoundAchievement: {fileID: 11400000, guid: 7eb5e072af748ee41b51e223307a600f, type: 2}
+  BaseHP: 2560
+  HPIncrement: 0
+  HPOverrides:
+  BasePrice: 656100
+  PriceExponent: 1
+  PriceOverrides:
+  prefab: {fileID: 114500280722557785, guid: b76fc83150bad9140a3bbe7b8a10f5c8, type: 2}
+  Material: {fileID: 2100000, guid: daece1fd3c4d5e0428f52e3a84b7a86d, type: 2}
+  ItemCountTester: 1
+  CountPerArtifactNeeded: 0100000002000000020000000400000004000000080000000800000010000000100000002000000020000000
+  CountPerGroupNeeded: 06000000090000000c0000000c000000180000001800000030000000300000006000000060000000
+  SumsPerArtifactNeeded: 010000000300000005000000090000000d000000150000001d0000002d0000003d0000005d0000007d000000
+  SumsPerGroupNeeded: 060000000f0000001b000000270000003f0000005700000087000000b70000001701000077010000
+  MinLootTierSkill: {fileID: 0}
+  MaxLootTierSkill: {fileID: 11400000, guid: 00eb28decf8adb944a9f60832c13743d, type: 2}
+  IncomeExtraSkill: {fileID: 11400000, guid: c1351fd0f9185bb4b9917d326d006e32, type: 2}
+  MineralCount: 0f000000100000001000000011000000110000001200000012000000130000001400000015000000
+  startScale: {x: 0.85, y: 0.6, z: 0.85}
+  endScale: {x: 1.15, y: 1.4, z: 1.15}
+  Description: 来自古代非洲的艺术、仪式和日常生活杰作。
+  CoinChanceMultiplier: 0.8
+  TicketChanceMultiplier: 0.8
+  ExtraMinLootCount: 0
+  ExtraMaxLootCount: 0
+  PriorityIndex: 5

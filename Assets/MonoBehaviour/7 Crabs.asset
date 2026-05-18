@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdb60690fc49a8be694861a23a681bc, type: 3}
+  m_Name: 7 Crabs
+  m_EditorClassIdentifier:
+  DisplayName: 海底
+  GROUPID: CRABS
+  Barcode: {fileID: 21300000, guid: 692a96ad80f4e34408aea7154e82ce85, type: 2}
+  Artifacts:
+  - {fileID: 114243736805655561, guid: 7403fc4a4d50bd740a2b1d0b7bd1d293, type: 2}
+  - {fileID: 114243736805655561, guid: 316492d6fe3923045b58c98bc77265f9, type: 2}
+  - {fileID: 114243736805655561, guid: 0efff56d748fd2a49b21b5f580533973, type: 2}
+  RequiredLevels: 000000000200000003000000
+  HighestLoot: {fileID: 114099118695303065, guid: 71a4beb4309cd244984d117ac6461534, type: 2}
+  OnEveryArtifactFoundAchievement: {fileID: 11400000, guid: 6f613520be4fa52418078a6ea17a43f5, type: 2}
+  BaseHP: 40960
+  HPIncrement: 0
+  HPOverrides:
+  BasePrice: 53144100
+  PriceExponent: 1
+  PriceOverrides:
+  prefab: {fileID: 114500280722557785, guid: b76fc83150bad9140a3bbe7b8a10f5c8, type: 2}
+  Material: {fileID: 2100000, guid: f0b2ee95f7374554fa5ba93b677aa8c8, type: 2}
+  ItemCountTester: 1
+  CountPerArtifactNeeded: 0100000002000000020000000400000004000000080000000800000010000000100000002000000020000000
+  CountPerGroupNeeded: 06000000090000000c0000000c000000180000001800000030000000300000006000000060000000
+  SumsPerArtifactNeeded: 010000000300000005000000090000000d000000150000001d0000002d0000003d0000005d0000007d000000
+  SumsPerGroupNeeded: 060000000f0000001b000000270000003f0000005700000087000000b70000001701000077010000
+  MinLootTierSkill: {fileID: 11400000, guid: 2842f5624d293974d8db58eb9297ca24, type: 2}
+  MaxLootTierSkill: {fileID: 0}
+  IncomeExtraSkill: {fileID: 0}
+  MineralCount: 15000000160000001600000017000000170000001800000018000000190000001a0000001b000000
+  startScale: {x: 0.85, y: 0.6, z: 0.85}
+  endScale: {x: 1.15, y: 1.4, z: 1.15}
+  Description: 横着走的大师，披着小盔甲，偶尔偷点零食。
+  CoinChanceMultiplier: 0.9
+  TicketChanceMultiplier: 0.9
+  ExtraMinLootCount: 0
+  ExtraMaxLootCount: 0
+  PriorityIndex: 7

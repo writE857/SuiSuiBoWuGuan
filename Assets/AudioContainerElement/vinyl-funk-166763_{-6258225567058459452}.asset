@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1233149941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d55dc7b0d64f35a4b9bb5d5a7a1a40, type: 3}
+  m_Name: vinyl-funk-166763_{-6258225567058459452}
+  m_EditorClassIdentifier:
+  m_AudioClip: {fileID: 8300000, guid: 017274428ac35d94daa975f16c93d9f6, type: 3}
+  m_Volume: -5
+  resourceEnabled: 1
+

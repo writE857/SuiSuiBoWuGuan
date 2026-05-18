@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7561e84710ecb1b96743cd4a2aae77d6, type: 3}
+  m_Name: 4 EgyptIncome
+  m_EditorClassIdentifier:
+  ID: EgyptIncome
+  DisplayName: 埃及收入
+  Description: +{0}倍埃及收藏收入
+  MaxLevel: 3
+  BasePrice: 20
+  ExtraPricePerLevel: 15
+  Icon: {fileID: 21300000, guid: 356e8c80426d32a44a089f79466febdd, type: 2}
+  BaseAmount: 0
+  IncreasePerLevel: 2
+  DebugSumPrice: 105
+  IMPLEMENTED: 0

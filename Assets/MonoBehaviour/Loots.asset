@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d8ff70cad02ea8c3ce6a986d93f04a, type: 3}
+  m_Name: Loots
+  m_EditorClassIdentifier:
+  Entries:
+  - {fileID: 114703437598541787, guid: 63b0629012b1d834cbab0f3c5636cb56, type: 2}
+  - {fileID: 114099118695303065, guid: 5f3a0fc59bcca7a4387f11d4adfa30df, type: 2}
+  - {fileID: 114099118695303065, guid: fefd2a8aa8d254a45b989d92fde0c5fa, type: 2}
+  - {fileID: 114099118695303065, guid: 6007f010474933942ad58573c2cab5dc, type: 2}
+  - {fileID: 114099118695303065, guid: cf9cf229564cd934abfe0545139b2f9f, type: 2}
+  - {fileID: 114099118695303065, guid: 53c697f9b7dfe6146a3a1f79f75b49f0, type: 2}
+  - {fileID: 114099118695303065, guid: 71a4beb4309cd244984d117ac6461534, type: 2}
+  - {fileID: 114099118695303065, guid: bb61deacf020f0d408c1537c296b187c, type: 2}
+  CoinLoot: {fileID: 114703437598541787, guid: abea33ff5b3da91469637bad1970be73, type: 2}
+  Ticket: {fileID: 114243736805655561, guid: add3d7e10418d5747a2abe3af500e41d, type: 2}

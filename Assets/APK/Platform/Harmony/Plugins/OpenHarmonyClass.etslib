@@ -1,0 +1,11 @@
+import { ClassHarmonyToUnity } from "./ClassHarmonyToUnity";
+import { StaticClassHarmonyToUnity } from "./StaticClassHarmonyToUnity";
+import sensor from '@ohos.sensor';
+// “Register”+你的插件名称
+export function RegisterOpenHarmonyClass() {
+    var register ={}
+    register["StaticClassHarmonyToUnity"] = StaticClassHarmonyToUnity;//静态类, 使用0penHarmonyJSClass
+    register["ClassHarmonyToUnity"]=new ClassHarmonyToUnity();//实例类，使用openHarmonyJS0bject,注意此处需要实例化
+    register["senor"]= sensor;//系统api,使用openHarmonyJsclass
+    return register
+}

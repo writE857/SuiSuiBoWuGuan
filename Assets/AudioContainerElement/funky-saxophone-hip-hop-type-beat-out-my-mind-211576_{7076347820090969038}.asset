@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1233149941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d55dc7b0d64f35a4b9bb5d5a7a1a40, type: 3}
+  m_Name: funky-saxophone-hip-hop-type-beat-out-my-mind-211576_{7076347820090969038}
+  m_EditorClassIdentifier:
+  m_AudioClip: {fileID: 8300000, guid: e55318f25611ecf4db0d9c2ac824e2be, type: 3}
+  m_Volume: -4
+  resourceEnabled: 1
+

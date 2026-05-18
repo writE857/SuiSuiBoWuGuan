@@ -1,0 +1,169 @@
+﻿入场费：2倍
+开罗附近的石头样本。当心诅咒。
+艺术与内容：Bearologist
+文物等级 5
+访客：10/分钟
+文物：$0
+关闭
+已发现36件
+收入：$10/分钟
+在一具古老石棺的背面发现的匕首。
+代码与游戏：Inki
+0 / 250
+匕首
+收入表
+5/10 件
+进度
+感谢游玩！
+$1
+罗马时代
+估价 $280
+每小时明细
+继续
+大热博物馆
+MAX
+'需要
+按住鼠标持续锤击
+窗口模式
+1920 x 1080
+未知
+自动锤击 1/10
+否
+$100
+音乐
+相机 1
+用 <b><size=10>5</size></b> 票购买
+历史准确
+>
+新文本
+$2147483640
+图形
+垂直同步
+5/8 件文物
+23 票
+石头完成！
+渲染比例
+遮罩
+收藏等级 4
+升级
+'声望
+完美石头
+音效
+帧数限制
+设置
+阴影
+声望
+返回
+<
+估价 $123
+伤害等级 1
+点击继续...
+音效
+先购买声望升级再升级这些！
+重置进度？
+重置进度
+镜头抖动
+今天真是个美好的日子！
+预览模式！
+按住鼠标时自动连续锤击，无需手动点击
+欢迎
+新游戏
+是
+<color=#99D2FF>L1</color> 颚骨 <color=#FFCA61>$126</color>\n<color=#99D2FF>L4</color> 卡诺匹斯罐 <color=#FFCA61>$75</color> \n<未知>
+埃及沙漠
+等级 25
+60 帧/秒
+非常高
+镜头摆动
+退出
+第1天 16:15
+开(60Hz)
+已发现战利品 4/5
+全屏
+分辨率
+$50000
+A16
+重置进度 >>>
+游戏玩法
+煤炭售出 $48
+幸运币
+声望博物馆：技巧、工具和宝藏的集合。
+1 票
+完成？
+极其怪异
+请输入真实姓名...
+提示
+实名认证
+退出
+尊敬的用户：\n您好，根据中华人民共和国国家新闻出版署《关于防止未成年人沉迷网络游戏的通知》对于移动网络游戏市场的相关规定及要求，游戏用户需要登记如下个人信息：
+您是未成年人，按照有关规定，您节假日只能使用180分钟游戏，非节假日能玩90分钟。
+确认
+真实姓名：
+提 示
+剩余时间：90分钟
+错误信息
+身份证号：
+请输入身份证号...
+BitField
+按钮
+颜色
+R
+G
+B
+A
+wibble
+枚举
+< 0 >
+<<<
+0.000
+>>>
+折叠
+折叠
+0
+消息文本
+面板标题
+重置
+0 %
+测试
+Vector2
+X
+Y
+Vector4
+Z
+W
+为保护你的眼睛。\n请休息一下。
+颚骨
+硬币 +1
+$2
+加载中...
+消息
+亲爱的未成年人用户：\n现在是22:00-8:00，请退出游戏，\n安心睡觉觉哦！
+博物馆
+UnityEngine.Rendering.DebugUI+Value, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224618682377417806, guid: ff9d8ad1770c0e9439a95d567e86c77c, type: 2}
+UnityEngine.Rendering.DebugUI+BoolField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224884547391421755, guid: 464c7c2d442ce5746a2d34d2b5120bbf, type: 2}
+UnityEngine.Rendering.DebugUI+IntField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224061268324235159, guid: 9c8d1bb6eb7842c42888c8baf6392adb, type: 2}
+UnityEngine.Rendering.DebugUI+UIntField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224061268324235159, guid: 62bc702d6793c7044963e6ffe3ca515c, type: 2}
+UnityEngine.Rendering.DebugUI+FloatField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224061268324235159, guid: 262aa0034122e25488dfe58d36639f19, type: 2}
+UnityEngine.Rendering.DebugUI+EnumField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224099118695303065, guid: daa38e66715d20348b316ac6f0bdf849, type: 2}
+UnityEngine.Rendering.DebugUI+Button, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224724804207875695, guid: 28e25d91eb719e541a85d79dd62283c7, type: 2}
+UnityEngine.Rendering.DebugUI+Foldout, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224099118695303065, guid: 7c9ee1daf184b9d4ea61bebff0bb2e9f, type: 2}
+UnityEngine.Rendering.DebugUI+ColorField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224256069497284392, guid: 8679ef8353b630d48868b652375cebbf, type: 2}
+UnityEngine.Rendering.DebugUI+Vector2Field, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224589667821646929, guid: 45072bc158f4c484b9cb591e13203406, type: 2}
+UnityEngine.Rendering.DebugUI+Vector3Field, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224985305603660343, guid: 526b5b68b87bd4b4894a5d5a7de56f9b, type: 2}
+UnityEngine.Rendering.DebugUI+Vector4Field, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224336590748365959, guid: 677f4e5d630beb641a3e9cc1250ef63e, type: 2}
+UnityEngine.Rendering.DebugUI+VBox, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224730242686860875, guid: 76c46164e12f17248bad000f548af618, type: 2}
+UnityEngine.Rendering.DebugUI+HBox, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224730242686860875, guid: 6567426ba9b28624e8c01fac8a040fae, type: 2}
+UnityEngine.Rendering.DebugUI+Container, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224703437598541787, guid: e5895be0cda118f4a81d7ed0fc7d4fad, type: 2}
+UnityEngine.Rendering.DebugUI+BitField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224589652054545887, guid: 1058aa8e1c0f77e48aa8df42da37ae53, type: 2}
+UnityEngine.Rendering.DebugUI+HistoryBoolField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224884547391421755, guid: 2c5fe79f754601744a78aa3e03cfea16, type: 2}
+UnityEngine.Rendering.DebugUI+HistoryEnumField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224618682377417806, guid: 3f9581888c5f204479f5a32fc36f9612, type: 2}
+UnityEngine.Rendering.DebugUI+Table, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224703437598541787, guid: e5895be0cda118f4a81d7ed0fc7d4fad, type: 2}
+UnityEngine.Rendering.DebugUI+Table+Row, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224099118695303065, guid: d8eb3786aece5644e8736ceb6b0560e4, type: 2}
+UnityEngine.Rendering.DebugUI+MessageBox, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224724804207875695, guid: 9cc115f0053389e40abbe1581afc3d67, type: 2}
+UnityEngine.Rendering.DebugUI+ProgressBarValue, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224884547391421755, guid: 0417f7e4dadda6b4995ee23bfcc3eb6c, type: 2}
+UnityEngine.Rendering.DebugUI+ValueTuple, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224618682377417806, guid: c2cb85fe718ccac4ea7c1ce09f7c8bc8, type: 2}
+UnityEngine.Rendering.DebugUI+ObjectField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224618682377417806, guid: 518f4b6dc9f0f2f4bafb8e841d7733d6, type: 2}
+UnityEngine.Rendering.DebugUI+ObjectListField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224099118695303065, guid: af907429b590ccf40916e45e65672faa, type: 2}
+UnityEngine.Rendering.DebugUI+ObjectPopupField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224099118695303065, guid: e41ff4d9128a1f942982eb7329947b49, type: 2}
+UnityEngine.Rendering.DebugUI+RuntimeDebugShadersMessageBox, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224724804207875695, guid: 9cc115f0053389e40abbe1581afc3d67, type: 2}
+UnityEngine.Rendering.DebugUI+RenderingLayerField, Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nprefab: {fileID: 224589652054545887, guid: f5c8fc617c8046643b149bf074df7f63, type: 2}

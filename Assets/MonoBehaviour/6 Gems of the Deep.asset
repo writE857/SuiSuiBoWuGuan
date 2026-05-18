@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdb60690fc49a8be694861a23a681bc, type: 3}
+  m_Name: 6 Gems of the Deep
+  m_EditorClassIdentifier:
+  DisplayName: 深海宝石
+  GROUPID: AQUATIC
+  Barcode: {fileID: 21300000, guid: 96b11248c2a4f7c42bac5a98220a1dbe, type: 2}
+  Artifacts:
+  - {fileID: 114243736805655561, guid: 6cb61b8bb883d804088ad321003cdb3c, type: 2}
+  - {fileID: 114243736805655561, guid: 4deec649b4f5e1146acdf11864ff3b4c, type: 2}
+  - {fileID: 114243736805655561, guid: 673ff7b7e03604c47b0fbd08ff3a2b92, type: 2}
+  RequiredLevels: 000000000200000003000000
+  HighestLoot: {fileID: 114099118695303065, guid: 53c697f9b7dfe6146a3a1f79f75b49f0, type: 2}
+  OnEveryArtifactFoundAchievement: {fileID: 11400000, guid: 174db31a88cee354984cc7c084636bc1, type: 2}
+  BaseHP: 10240
+  HPIncrement: 0
+  HPOverrides:
+  BasePrice: 5904900
+  PriceExponent: 1
+  PriceOverrides:
+  prefab: {fileID: 114500280722557785, guid: b76fc83150bad9140a3bbe7b8a10f5c8, type: 2}
+  Material: {fileID: 2100000, guid: 95e86259c9e298f4da3de0e0c2df02ac, type: 2}
+  ItemCountTester: 1
+  CountPerArtifactNeeded: 0100000002000000020000000400000004000000080000000800000010000000100000002000000020000000
+  CountPerGroupNeeded: 06000000090000000c0000000c000000180000001800000030000000300000006000000060000000
+  SumsPerArtifactNeeded: 010000000300000005000000090000000d000000150000001d0000002d0000003d0000005d0000007d000000
+  SumsPerGroupNeeded: 060000000f0000001b000000270000003f0000005700000087000000b70000001701000077010000
+  MinLootTierSkill: {fileID: 11400000, guid: aa25febb659165d4c9c4e1ac913910a1, type: 2}
+  MaxLootTierSkill: {fileID: 0}
+  IncomeExtraSkill: {fileID: 0}
+  MineralCount: 12000000130000001300000014000000140000001500000015000000160000001700000018000000
+  startScale: {x: 0.85, y: 0.6, z: 0.85}
+  endScale: {x: 1.15, y: 1.4, z: 1.15}
+  Description: 波塞冬的口袋收藏，掉在了相当不方便打捞的深处。
+  CoinChanceMultiplier: 0.85
+  TicketChanceMultiplier: 0.85
+  ExtraMinLootCount: 0
+  ExtraMaxLootCount: 0
+  PriorityIndex: 6

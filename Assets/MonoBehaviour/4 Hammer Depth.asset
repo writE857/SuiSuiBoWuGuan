@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76183538faf5558c2fa709e8039bfd99, type: 3}
+  m_Name: 4 Hammer Depth
+  m_EditorClassIdentifier:
+  ID: HammerDepth
+  MaxLevel: 10
+  DisplayName: 深度
+  BasePrice: 1800
+  Icon: {fileID: 21300000, guid: f23a17ab7be2e4f4db8b4b3a4d87000d, type: 2}
+  Description: 让敲击穿透得更深，砸得更扎实。
+  SteamAchievement: {fileID: 11400000, guid: c614a6412f4253f4896ac35d24eda32f, type: 2}
+  Prices: 840300008c0a0000483f0000c41c01004c560300c8051400041a5a00a0140e0140b72803c0c2da06

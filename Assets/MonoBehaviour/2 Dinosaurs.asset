@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdb60690fc49a8be694861a23a681bc, type: 3}
+  m_Name: 2 Dinosaurs
+  m_EditorClassIdentifier:
+  DisplayName: 恐龙时代
+  GROUPID: DINO
+  Barcode: {fileID: 21300000, guid: dbfc29c21e6ae384fa3e102fb8416542, type: 2}
+  Artifacts:
+  - {fileID: 114243736805655561, guid: f08d88c22b7fe3943847ef2dde81af51, type: 2}
+  - {fileID: 114243736805655561, guid: d2c70e7be980e2c49a4f5ebe5b25aff9, type: 2}
+  - {fileID: 114243736805655561, guid: 1de93d20c8e8e0545b22095156ed8054, type: 2}
+  RequiredLevels: 000000000200000003000000
+  HighestLoot: {fileID: 114099118695303065, guid: 5f3a0fc59bcca7a4387f11d4adfa30df, type: 2}
+  OnEveryArtifactFoundAchievement: {fileID: 11400000, guid: 96cb3332da58071499a9ccd4fbdea95a, type: 2}
+  BaseHP: 40
+  HPIncrement: 0
+  HPOverrides:
+  BasePrice: 900
+  PriceExponent: 1
+  PriceOverrides:
+  prefab: {fileID: 114500280722557785, guid: b76fc83150bad9140a3bbe7b8a10f5c8, type: 2}
+  Material: {fileID: 2100000, guid: 7d0835def4fac044788c2130aa8db71e, type: 2}
+  ItemCountTester: 1
+  CountPerArtifactNeeded: 0100000002000000020000000400000004000000080000000800000010000000100000002000000020000000
+  CountPerGroupNeeded: 06000000090000000c0000000c000000180000001800000030000000300000006000000060000000
+  SumsPerArtifactNeeded: 010000000300000005000000090000000d000000150000001d0000002d0000003d0000005d0000007d000000
+  SumsPerGroupNeeded: 060000000f0000001b000000270000003f0000005700000087000000b70000001701000077010000
+  MinLootTierSkill: {fileID: 0}
+  MaxLootTierSkill: {fileID: 11400000, guid: e24e35ae553cbe94bb200b56a626ea53, type: 2}
+  IncomeExtraSkill: {fileID: 11400000, guid: 0ad669cd206cf6744b40f1cabd0eece5, type: 2}
+  MineralCount: 060000000700000007000000080000000800000009000000090000000a0000000b0000000c000000
+  startScale: {x: 0.85, y: 0.6, z: 0.85}
+  endScale: {x: 1.15, y: 1.4, z: 1.15}
+  Description: 曾经漫游咆哮的巨兽们，显然没有收到小行星通知。
+  CoinChanceMultiplier: 0.65
+  TicketChanceMultiplier: 0.65
+  ExtraMinLootCount: 0
+  ExtraMaxLootCount: 0
+  PriorityIndex: 2

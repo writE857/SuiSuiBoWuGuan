@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1233149941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d55dc7b0d64f35a4b9bb5d5a7a1a40, type: 3}
+  m_Name: skyclad_MECHClik_Button_Small_Press_Click_Bright_Plastic_1st_Click_Slightly_Higher_SCS_NONE_Contact_Mic_504_{648724189161268313}_0
+  m_EditorClassIdentifier: 
+  m_AudioClip: {fileID: 8300000, guid: 84b153d972815a3429a16344d830de2d, type: 3}
+  m_Volume: 0
+  resourceEnabled: 1

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76183538faf5558c2fa709e8039bfd99, type: 3}
+  m_Name: 6 Entry Fee
+  m_EditorClassIdentifier:
+  ID: EntryFee
+  MaxLevel: 25
+  DisplayName: 入场费
+  BasePrice: 3600
+  Icon: {fileID: 21300000, guid: 2873e701fd290444baf6b699cfc20060, type: 2}
+  Description: 提高入场费，让你变得更富有！
+  SteamAchievement: {fileID: 11400000, guid: 9536a457db12974459613ece8acf5e40, type: 2}
+  Prices: 78000000c80000002c01000084030000080700008c0a0000a41f0000483f0000ec5e0000c41c0100883902004c560300e4020a00c8051400ac081e00041a5a00c00db400a0140e0140b72803c0c2da060068890980b2e60e00d012130057a616

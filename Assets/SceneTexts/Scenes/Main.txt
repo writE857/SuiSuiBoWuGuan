@@ -1,0 +1,466 @@
+﻿6022|TMP|Entry Fee|入场费：2倍
+6023|TMP|Description|开罗附近的石头样本。当心诅咒。
+6024|TMP|Art|艺术与内容：Bearologist
+6025|TMP|Level|文物等级 5
+6026|TMP|Visitor Count|访客：10/分钟
+6027|TMP|Collection Value|文物：$0
+6028|TMP|Text (TMP)|关闭
+6029|TMP|Text (TMP)|13
+6030|TMP|Count Found|已发现36件
+6031|TMP|Income|收入：$10/分钟
+6032|TMP|Description|在一具古老石棺的背面发现的匕首。
+6033|TMP|Code|代码与游戏：Inki
+6034|TMP|Text (TMP) (1)|0 / 250
+6035|TMP|Name|匕首
+6036|TMP|Title|收入表
+6037|TMP|XP|5/10 件
+6038|TMP|Text (TMP)|进度
+6039|TMP|Thank you for Playing!|感谢游玩！
+6040|TMP|Money|$1
+6041|TMP|Group|罗马时代
+6042|TMP|Income|估价 $280
+6043|TMP|Title|每小时明细
+6044|TMP|Text (TMP)|继续
+6045|TMP|Museum|大热博物馆
+6046|TMP|Max|MAX
+6047|TMP|Locked Text|'需要
+6048|TMP|Description|按住鼠标持续锤击
+6049|TMP|Window Mode|窗口模式
+6050|TMP|Text (TMP)|1920 x 1080
+6051|TMP|Max|MAX
+6052|TMP|Name|未知
+6053|TMP|Description|按住鼠标持续锤击
+6054|TMP|Name|自动锤击 1/10
+6055|TMP|Name|未知
+6056|TMP|Confirmation Option (1)|否
+6057|TMP|Price|$100
+6058|TMP|Name|自动锤击 1/10
+6059|TMP|Description|按住鼠标持续锤击
+6060|TMP|Music|音乐
+6061|TMP|Description|按住鼠标持续锤击
+6062|TMP|Title|大热博物馆
+6063|TMP|Camera Feed|相机 1
+6064|TMP|Name|未知
+6065|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6066|TMP|Text (TMP)|历史准确
+6067|TMP|XP|5/10 件
+6068|TMP|Name|自动锤击 1/10
+6069|TMP|Text (TMP)|>
+6070|TMP|Text (TMP) (2)|新文本
+6071|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6072|TMP|Max|MAX
+6073|TMP|Max|MAX
+6074|TMP|Price|$2147483640
+6075|TMP|Name|未知
+6076|TMP|Graphics|图形
+6077|TMP|Name|自动锤击 1/10
+6078|TMP|Vsync|垂直同步
+6079|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6080|TMP|XP|5/8 件文物
+6081|TMP|XP|5/8 件文物
+6082|TMP|XP|5/8 件文物
+6083|TMP|XP|5/8 件文物
+6084|TMP|XP|5/8 件文物
+6085|TMP|XP|5/8 件文物
+6086|TMP|XP|5/8 件文物
+6087|TMP|XP|5/8 件文物
+6088|TMP|Text (TMP)|>
+6089|TMP|Description|按住鼠标持续锤击
+6090|TMP|Name|自动锤击 1/10
+6091|TMP|Name|未知
+6092|TMP|Description|按住鼠标持续锤击
+6093|TMP|Name|自动锤击 1/10
+6094|TMP|Ticket Count|23 票
+6095|TMP|Name|自动锤击 1/10
+6096|TMP|Name|未知
+6097|TMP|Stone Complete|石头完成！
+6098|TMP|Description|按住鼠标持续锤击
+6099|TMP|Name|未知
+6100|TMP|Description|按住鼠标持续锤击
+6101|TMP|Description|按住鼠标持续锤击
+6102|TMP|Description|按住鼠标持续锤击
+6103|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6104|TMP|Name|自动锤击 1/10
+6105|TMP|Render Scale|渲染比例
+6106|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6107|TMP|Max|MAX
+6108|TMP|Text (TMP)|>
+6109|TMP|Name|自动锤击 1/10
+6110|TMP|Max|MAX
+6111|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6112|TMP|Locked Text|'需要
+6113|TMP|Text (TMP)|继续
+6114|TMP|Locked Text|'需要
+6115|TMP|Text (TMP)|>
+6116|TMP|Name|未知
+6117|TMP|Name|自动锤击 1/10
+6118|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6119|TMP|Max|MAX
+6120|TMP|Max|MAX
+6121|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6122|TMP|Description|按住鼠标持续锤击
+6123|TMP|Name|遮罩
+6124|TMP|Locked Text|'需要
+6125|TMP|Name|未知
+6126|TMP|Description|按住鼠标持续锤击
+6127|TMP|Locked Text|'需要
+6128|TMP|Level|收藏等级 4
+6129|TMP|Text (TMP)|>
+6130|TMP|Description|按住鼠标持续锤击
+6131|TMP|Price|$100
+6132|TMP|Max|MAX
+6133|TMP|Title|升级
+6134|TMP|Name|自动锤击 1/10
+6135|TMP|Locked Text|'需要
+6136|TMP|Max|MAX
+6137|TMP|Text (TMP)|>
+6138|TMP|Price|$100
+6139|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6140|TMP|Text (TMP) (1)|'声望
+6141|TMP|Description|按住鼠标持续锤击
+6142|TMP|Max|MAX
+6143|TMP|Name|完美石头
+6144|TMP|Description|按住鼠标持续锤击
+6145|TMP|Name|自动锤击 1/10
+6146|TMP|Description|按住鼠标持续锤击
+6147|TMP|Name|未知
+6148|TMP|Text (TMP)|>
+6149|TMP|Max|MAX
+6150|TMP|Name|自动锤击 1/10
+6151|TMP|Name|自动锤击 1/10
+6152|TMP|Name|自动锤击 1/10
+6153|TMP|Name|自动锤击 1/10
+6154|TMP|Name|自动锤击 1/10
+6155|TMP|Name|未知
+6156|TMP|Description|按住鼠标持续锤击
+6157|TMP|Name|自动锤击 1/10
+6158|TMP|Description|按住鼠标持续锤击
+6159|TMP|SFX|音效
+6160|TMP|Description|按住鼠标持续锤击
+6161|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6162|TMP|Frame Limit|帧数限制
+6163|TMP|Text (TMP)|设置
+6164|TMP|Description|开罗附近的石头样本。当心诅咒。
+6165|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6166|TMP|Name|自动锤击 1/10
+6167|TMP|Shadows|阴影
+6168|TMP|Name|自动锤击 1/10
+6169|TMP|Text (TMP)|95%
+6170|TMP|Title|声望
+6171|TMP|Description|按住鼠标持续锤击
+6172|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6173|TMP|Back|返回
+6174|TMP|Max|MAX
+6175|TMP|Text (TMP)|<
+6176|TMP|Value|估价 $123
+6177|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6178|TMP|Description|按住鼠标持续锤击
+6179|TMP|Name|伤害等级 1
+6180|TMP|Name|未知
+6181|TMP|Max|MAX
+6182|TMP|Description|按住鼠标持续锤击
+6183|TMP|Name|伤害等级 1
+6184|TMP|Click to Continue|点击继续...
+6185|TMP|Sounds|音效
+6186|TMP|Name|未知
+6187|TMP|Max|MAX
+6188|TMP|Text (TMP)|>
+6189|TMP|Max|MAX
+6190|TMP|Name|未知
+6191|TMP|Description|按住鼠标持续锤击
+6192|TMP|Description|按住鼠标持续锤击
+6193|TMP|Name|自动锤击 1/10
+6194|TMP|Max|MAX
+6195|TMP|Name|自动锤击 1/10
+6196|TMP|Name|未知
+6197|TMP|Name|自动锤击 1/10
+6198|TMP|Text (TMP) (1)|新文本
+6199|TMP|View Warning|先购买声望升级再升级这些！
+6200|TMP|Locked Text|'需要
+6201|TMP|Max|MAX
+6202|TMP|Max|MAX
+6203|TMP|Max|MAX
+6204|TMP|Max|MAX
+6205|TMP|Name|自动锤击 1/10
+6206|TMP|Title|重置进度？
+6207|TMP|RESET PROGRESS|重置进度
+6208|TMP|Max|MAX
+6209|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6210|TMP|Name|未知
+6211|TMP|Description|按住鼠标持续锤击
+6212|TMP|Camera Shake|镜头抖动
+6213|TMP|Description|今天真是个美好的日子！
+6214|TMP|Locked Text|'需要
+6215|TMP|Description|按住鼠标持续锤击
+6216|TMP|Description|按住鼠标持续锤击
+6217|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6218|TMP|Description|按住鼠标持续锤击
+6219|TMP|Name|自动锤击 1/10
+6220|TMP|Max|MAX
+6221|TMP|XP|5/10 件
+6222|TMP|Name|自动锤击 1/10
+6223|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6224|TMP|Max|MAX
+6225|TMP|View Warning|预览模式！
+6226|TMP|Name|自动锤击 1/10
+6227|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6228|TMP|Max|MAX
+6229|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6230|TMP|Name|自动锤击 1/10
+6231|TMP|Description|按住鼠标持续锤击
+6232|TMP|Max|MAX
+6233|TMP|Name|伤害等级 1
+6234|TMP|Description|按住鼠标持续锤击
+6235|TMP|Name|未知
+6236|TMP|Locked Text|'需要
+6237|TMP|Name|未知
+6238|TMP|Description|按住鼠标持续锤击
+6239|TMP|Name|未知
+6240|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6241|TMP|Description|按住鼠标持续锤击
+6242|TMP|Name|未知
+6243|TMP|Description Bought|按住鼠标时自动连续锤击，无需手动点击
+6244|TMP|Max|MAX
+6245|TMP|Max|MAX
+6246|TMP|Text (TMP)|欢迎
+6247|TMP|Locked Text|'需要
+6248|TMP|Max|MAX
+6249|TMP|Max|MAX
+6250|TMP|Text (TMP)|新游戏
+6251|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6252|TMP|Max|MAX
+6253|TMP|Name|自动锤击 1/10
+6254|TMP|Name|自动锤击 1/10
+6255|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6256|TMP|Level|25
+6257|TMP|Level|25
+6258|TMP|Level|25
+6259|TMP|Level|25
+6260|TMP|Level|25
+6261|TMP|Level|25
+6262|TMP|Level|25
+6263|TMP|Level|25
+6264|TMP|Confirmation Option|是
+6265|TMP|Name|未知
+6266|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6267|TMP|Name|自动锤击 1/10
+6268|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6269|TMP|Name|未知
+6270|TMP|Max|MAX
+6271|TMP|Name|未知
+6272|TMP|Name|自动锤击 1/10
+6273|TMP|Text (TMP)|<
+6274|TMP|Locked Text|'需要
+6275|TMP|Artifacts (2)|<color=#99D2FF>L1</color> 颚骨 <color=#FFCA61>$126</color>\n<color=#99D2FF>L4</color> 卡诺匹斯罐 <color=#FFCA61>$75</color> \n<未知>
+6276|TMP|Money|$1
+6277|TMP|Name|未知
+6278|TMP|Description|按住鼠标持续锤击
+6279|TMP|Name|未知
+6280|TMP|Name|自动锤击 1/10
+6281|TMP|Name|未知
+6282|TMP|Name|声望
+6283|TMP|Text (TMP)|>
+6284|TMP|Name|自动锤击 1/10
+6285|TMP|Description|按住鼠标持续锤击
+6286|TMP|Max|MAX
+6287|TMP|Name|未知
+6288|TMP|Name|自动锤击 1/10
+6289|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6290|TMP|Name|未知
+6291|TMP|Name|埃及沙漠
+6292|TMP|Name|埃及沙漠
+6293|TMP|Name|埃及沙漠
+6294|TMP|Name|埃及沙漠
+6295|TMP|Name|埃及沙漠
+6296|TMP|Name|埃及沙漠
+6297|TMP|Name|埃及沙漠
+6298|TMP|Name|埃及沙漠
+6299|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6300|TMP|Name|自动锤击 1/10
+6301|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6302|TMP|Max|MAX
+6303|TMP|Max|MAX
+6304|TMP|Name|未知
+6305|TMP|Level|等级 25
+6306|TMP|Text (TMP)|<
+6307|TMP|Max|MAX
+6308|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6309|TMP|Text (TMP)|'声望
+6310|TMP|Locked Text|'需要
+6311|TMP|Text (TMP)|返回
+6312|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6313|TMP|Name|自动锤击 1/10
+6314|TMP|Name|未知
+6315|TMP|Text (TMP)|60 帧/秒
+6316|TMP|Name|自动锤击 1/10
+6317|TMP|Description|开罗附近的石头样本。当心诅咒。
+6318|TMP|Name|未知
+6319|TMP|Title|设置
+6320|TMP|Description|按住鼠标持续锤击
+6321|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6322|TMP|Text (TMP)|非常高
+6323|TMP|Name|未知
+6324|TMP|Camera Sway|镜头摆动
+6325|TMP|Max|MAX
+6326|TMP|Price|$100
+6327|TMP|Name|自动锤击 1/10
+6328|TMP|Name|自动锤击 1/10
+6329|TMP|Max|MAX
+6331|TMP|Name|未知
+6332|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6333|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6334|TMP|Max|MAX
+6335|TMP|Text (TMP)|95%
+6336|TMP|Locked Text|'需要
+6337|TMP|Locked Text|'需要
+6338|TMP|Name|未知
+6339|TMP|Description|按住鼠标持续锤击
+6340|TMP|Price|$100
+6341|TMP|Text (TMP)|退出
+6342|TMP|Description|按住鼠标持续锤击
+6343|TMP|Text (TMP)|95%
+6344|TMP|Max|MAX
+6345|TMP|Time Display|第1天 16:15
+6346|TMP|Text (TMP)|开(60Hz)
+6347|TMP|Name|未知
+6348|TMP|Loot Counter|已发现战利品 4/5
+6349|TMP|Locked Text|'需要
+6350|TMP|Text (TMP)|全屏
+6351|TMP|Resolution|分辨率
+6352|TMP|Max|MAX
+6353|TMP|Description|按住鼠标持续锤击
+6354|TMP|Max|MAX
+6355|TMP|Description|按住鼠标持续锤击
+6356|TMP|Name|未知
+6357|TMP|Name|自动锤击 1/10
+6358|TMP|Name|未知
+6359|TMP|Price|$50000
+6360|TMP|Price|$50000
+6361|TMP|Price|$50000
+6362|TMP|Price|$50000
+6363|TMP|Price|$50000
+6364|TMP|Price|$50000
+6365|TMP|Price|$50000
+6366|TMP|Price|$50000
+6367|TMP|Name|自动锤击 1/10
+6368|TMP|Description|按住鼠标持续锤击
+6369|TMP|XP|5/8 件文物
+6370|TMP|Name|未知
+6371|TMP|Description|按住鼠标持续锤击
+6372|TMP|Name|未知
+6373|TMP|Name|未知
+6374|TMP|Name|未知
+6375|TMP|Description|按住鼠标持续锤击
+6376|TMP|Name|伤害等级 1
+6377|TMP|Name|未知
+6378|TMP|Text (TMP)|0.9
+6379|TMP|Max|MAX
+6380|TMP|Name|未知
+6381|TMP|Locked Text|'需要
+6382|TMP|Name|自动锤击 1/10
+6383|TMP|Description|按住鼠标持续锤击
+6384|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6385|TMP|Text (TMP)|>
+6386|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6387|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6388|TMP|Text (TMP)|A16
+6389|TMP|Max|MAX
+6390|TMP|Group|埃及沙漠
+6391|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6392|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6393|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6394|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6395|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6396|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6397|TMP|Max|MAX
+6398|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6399|TMP|Name|自动锤击 1/10
+6400|TMP|Description|按住鼠标持续锤击
+6401|TMP|Name|未知
+6402|TMP|Locked Text|'需要
+6403|TMP|Description|按住鼠标持续锤击
+6404|TMP|Max|MAX
+6405|TMP|Description|按住鼠标持续锤击
+6406|TMP|Name|未知
+6407|TMP|Name|未知
+6408|TMP|Name|未知
+6409|TMP|Description|按住鼠标持续锤击
+6410|TMP|Name|自动锤击 1/10
+6411|TMP|Text (TMP)|<
+6412|TMP|Name|伤害等级 1
+6413|TMP|Locked Text|'需要
+6414|TMP|Name|自动锤击 1/10
+6415|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6416|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6417|TMP|Text (TMP)|<
+6418|TMP|Max|MAX
+6419|TMP|Level|25
+6420|TMP|Locked Text|'需要
+6421|TMP|Name|自动锤击 1/10
+6422|TMP|Text (TMP)|<
+6423|TMP|Description|按住鼠标持续锤击
+6424|TMP|Reset Progress|重置进度 >>>
+6425|TMP|Locked Text|'需要
+6426|TMP|Name|自动锤击 1/10
+6427|TMP|Description|按住鼠标持续锤击
+6428|TMP|Price|$100
+6429|TMP|Text (TMP)|<
+6430|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6431|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6432|TMP|Description|按住鼠标持续锤击
+6433|TMP|Gameplay|游戏玩法
+6434|TMP|Description|按住鼠标持续锤击
+6435|TMP|Max|MAX
+6436|TMP|Name|自动锤击 1/10
+6437|TMP|Locked Text|'需要
+6438|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6439|TMP|Name|未知
+6440|TMP|Text (TMP)|<
+6441|TMP|Name|自动锤击 1/10
+6442|TMP|Max|MAX
+6443|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6444|TMP|Title|埃及沙漠
+6445|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6446|TMP|Name|未知
+6447|TMP|Name|自动锤击 1/10
+6448|TMP|Locked Text|'需要
+6449|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6450|TMP|Notification|煤炭售出 $48
+6451|TMP|Name|未知
+6452|TMP|Money|幸运币
+6453|TMP|Name|未知
+6454|TMP|Max|MAX
+6455|TMP|Description|声望博物馆：技巧、工具和宝藏的集合。
+6456|TMP|Description|按住鼠标持续锤击
+6457|TMP|Text (TMP)|<
+6458|TMP|Price|1 票
+6459|TMP|Done|完成？
+6460|TMP|Text (TMP)|<
+6461|TMP|Locked Text|'需要
+6462|TMP|Room Name|大热博物馆
+6463|TMP|Max|MAX
+6464|TMP|Description|按住鼠标持续锤击
+6465|TMP|Text (TMP)|极其怪异
+6466|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6467|TMP|Name|自动锤击 1/10
+6468|TMP|Max|MAX
+6469|TMP|Locked Text|'需要
+6470|TMP|Name|自动锤击 1/10
+6471|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6472|TMP|Max|MAX
+6473|TMP|Max|MAX
+6474|TMP|Text (TMP)|95%
+6475|TMP|Name|自动锤击 1/10
+6476|TMP|Name|自动锤击 1/10
+6477|TMP|Name|伤害等级 1
+6478|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6479|TMP|Description|按住鼠标持续锤击
+6480|TMP|Max|MAX
+6481|TMP|Name|未知
+6482|TMP|Name|未知
+6483|TMP|Name|未知
+6484|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6485|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
+6486|TMP|Name|未知
+6487|TMP|Description|按住鼠标持续锤击
+6488|TMP|Buy Price|用 <b><size=10>5</size></b> 票购买
