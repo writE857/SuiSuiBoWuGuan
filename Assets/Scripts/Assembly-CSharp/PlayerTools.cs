@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerTools : MonoBehaviour
 {
+	private const float MaxVisualLift = 0.035f;
+
 	public Hammer Hammer;
 
 	public LootMagnet LootMagnet;
@@ -37,17 +39,17 @@ public class PlayerTools : MonoBehaviour
 			InputAction clickAction = ClickAction != null ? ClickAction.action : null;
 			bool clickStarted = (clickAction != null && clickAction.WasPressedThisFrame()) || Input.GetMouseButtonDown(0);
 			bool clickPressed = (clickAction != null && clickAction.IsPressed()) || Input.GetMouseButton(0);
-			bool canHit = HasBrick && !IsPointerOverUI();
+			bool canUseTool = !IsPointerOverUI();
 			PlaceOnSurface();
 			VisualObjects.SetActiveSmart(!Singleton<GameSession>.Current.IsInMenu);
 			LootMagnet.IsPulling = true;
-			if (canHit && clickStarted)
+			if (canUseTool && clickStarted)
 			{
 				Hammer.Use();
 			}
 			else
 			{
-				Hammer.IsHitting = canHit && clickPressed;
+				Hammer.IsHitting = canUseTool && clickPressed;
 			}
 		}
 	}
@@ -60,23 +62,33 @@ public class PlayerTools : MonoBehaviour
 	private void PlaceOnSurface()
 	{
 		Camera mainCamera = Camera.main;
-		if (mainCamera == null || !MouseScreenPosition.TryGetPosition(ClickAction, out var mousePosition))
+		if (mainCamera == null || !MouseScreenPosition.TryGet(out var mousePosition))
 		{
 			return;
 		}
 		Ray cameraRay = mainCamera.ScreenPointToRay(mousePosition);
-		if (Physics.Raycast(cameraRay, out var hitInfo, float.MaxValue, LayerMask, QueryTriggerInteraction.Ignore))
+		Vector3 visualPosition = base.transform.position;
+		int visualMask = LayerMask.value & ~LayerMask2.value;
+		if (visualMask != 0 && Physics.Raycast(cameraRay, out var hitInfo, float.MaxValue, visualMask, QueryTriggerInteraction.Ignore))
 		{
-			base.transform.position = hitInfo.point;
+			visualPosition = hitInfo.point;
 		}
 		else if (new Plane(Vector3.up, base.transform.position).Raycast(cameraRay, out var enter))
 		{
-			base.transform.position = cameraRay.GetPoint(enter);
+			visualPosition = cameraRay.GetPoint(enter);
 		}
-		Ray ray = new Ray(base.transform.position + Vector3.up * 1f, Vector3.down * 3f);
+		base.transform.position = visualPosition;
+		Vector3 damageOrigin = visualPosition;
+		if (Physics.Raycast(cameraRay, out hitInfo, float.MaxValue, LayerMask, QueryTriggerInteraction.Ignore))
+		{
+			damageOrigin = hitInfo.point;
+		}
+		Ray ray = new Ray(damageOrigin + Vector3.up * 1f, Vector3.down * 3f);
 		if (Physics.SphereCast(ray, SphereCollider.WorldRadius(), out hitInfo, float.MaxValue, LayerMask2, QueryTriggerInteraction.Ignore))
 		{
-			base.transform.position = ray.origin + ray.direction * (hitInfo.distance + SphereCollider.WorldRadius());
+			damageOrigin = ray.origin + ray.direction * (hitInfo.distance + SphereCollider.WorldRadius());
 		}
+		base.transform.position = Vector3.Lerp(visualPosition, damageOrigin, Mathf.Clamp01(MaxVisualLift / Mathf.Max(Vector3.Distance(visualPosition, damageOrigin), 0.0001f)));
+		Hammer.SetDamageOrigin(damageOrigin);
 	}
 }

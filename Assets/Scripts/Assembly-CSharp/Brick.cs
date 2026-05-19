@@ -43,6 +43,7 @@ public class Brick : MonoBehaviour
 			{
 				LootGenerator.Loots[i].didInit = true;
 			}
+			CubeModel.BeginBreakPreparation(Singleton<Hammer>.Current != null ? Singleton<Hammer>.Current.PieceDeath : null);
 		}
 	}
 

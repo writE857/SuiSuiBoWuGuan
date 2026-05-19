@@ -21,6 +21,15 @@ public class HammerAnimator : MonoBehaviour
 
 	private Tween swingTween;
 
+	private Vector3 restEulerAngles;
+
+	private bool hasRestPose;
+
+	private void Awake()
+	{
+		CacheRestPose();
+	}
+
 	public void HitNow()
 	{
 		Swing();
@@ -28,18 +37,30 @@ public class HammerAnimator : MonoBehaviour
 
 	public void Swing()
 	{
+		CacheRestPose();
 		swingTween?.Kill();
 		IsSwinging = true;
 		OnHitEnd?.Invoke();
 		target.localEulerAngles = new Vector3(UpAngle, 0f, 0f);
-		swingTween = DOTween.Sequence().Append(target.DOLocalRotate(new Vector3(downAngle, 0f, 0f), swingDownTime).SetEase(Ease.OutQuad)).OnComplete(delegate
-		{
-			IsSwinging = false;
-		})
-			.Append(target.DOLocalRotate(new Vector3(UpAngle, 0f, 0f), swingUpTime).SetEase(Ease.InQuad))
+		swingTween = DOTween.Sequence()
+			.Append(target.DOLocalRotate(new Vector3(downAngle, 0f, 0f), swingDownTime).SetEase(Ease.OutQuad))
+			.Append(target.DOLocalRotate(restEulerAngles, swingUpTime).SetEase(Ease.InQuad))
+			.OnComplete(delegate
+			{
+				IsSwinging = false;
+			})
 			.OnKill(delegate
 			{
 				IsSwinging = false;
 			});
+	}
+
+	private void CacheRestPose()
+	{
+		if (!hasRestPose && target != null)
+		{
+			restEulerAngles = target.localEulerAngles;
+			hasRestPose = true;
+		}
 	}
 }

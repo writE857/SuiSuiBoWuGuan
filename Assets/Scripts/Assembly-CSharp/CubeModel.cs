@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CubeModel : MonoBehaviour
 {
+	private const int PrepareBatchSize = 24;
+
 	public GameObject Preview;
 
 	public GameObject Broken;
@@ -14,6 +16,8 @@ public class CubeModel : MonoBehaviour
 	private MeshRenderer[] previewRenderers;
 
 	private MeshRenderer[] brokenRenderers;
+
+	private Coroutine prepareBreakComponentsRoutine;
 
 	public int PieceCount => brokenPieces?.Length ?? 0;
 
@@ -67,6 +71,16 @@ public class CubeModel : MonoBehaviour
 		SetHP();
 	}
 
+	public void BeginBreakPreparation(PieceDeath template)
+	{
+		CacheComponents();
+		if (prepareBreakComponentsRoutine != null)
+		{
+			return;
+		}
+		prepareBreakComponentsRoutine = StartCoroutine(PrepareBreakComponentsAsync(template));
+	}
+
 	private void ApplySize()
 	{
 		Preview.transform.localScale = ArtifactGroup.CurrentScale;
@@ -115,5 +129,31 @@ public class CubeModel : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	private System.Collections.IEnumerator PrepareBreakComponentsAsync(PieceDeath template)
+	{
+		List<CubePiece> list = new List<CubePiece>(brokenPieces.Length);
+		for (int i = 0; i < brokenPieces.Length; i++)
+		{
+			CubePiece cubePiece = brokenPieces[i];
+			if (cubePiece != null)
+			{
+				list.Add(cubePiece);
+			}
+		}
+		list.Sort((a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
+		int preparedThisFrame = 0;
+		for (int j = 0; j < list.Count; j++)
+		{
+			list[j].PrepareBreakComponents(template);
+			preparedThisFrame++;
+			if (preparedThisFrame >= PrepareBatchSize)
+			{
+				preparedThisFrame = 0;
+				yield return null;
+			}
+		}
+		prepareBreakComponentsRoutine = null;
 	}
 }

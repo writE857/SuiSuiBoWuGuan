@@ -2,16 +2,17 @@ using System.Collections;
 using System.Numerics;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MoneyText : MonoBehaviour
 {
 	public TMP_Text Text;
 
-	private BigInteger lastAmountBig = 0;
+	private BigInteger displayedAmount = 0;
 
 	public float animationDuration = 0.4f;
 
-	private BigInteger lastGoal;
+	private BigInteger targetAmount;
 
 	private Coroutine animRoutine;
 
@@ -22,33 +23,73 @@ public class MoneyText : MonoBehaviour
 		ConfigureText();
 	}
 
-	private void Update()
+	private void OnEnable()
 	{
-		GameSession current = Singleton<GameSession>.Current;
-		if (current == null || Text == null)
+		GameEvents current = Singleton<GameEvents>.Current;
+		current.OnMoneyAdded += OnMoneyChanged;
+		current.OnMoneySpent += OnMoneyChanged;
+		current.OnRestart += RefreshImmediate;
+		current.OnPrestigeChange += RefreshImmediate;
+		RefreshImmediate();
+	}
+
+	private void OnDisable()
+	{
+		GameEvents gameEvents = UnityEngine.Object.FindFirstObjectByType<GameEvents>(FindObjectsInactive.Include);
+		if (gameEvents == null)
 		{
 			return;
 		}
-		if (!hasRendered || lastGoal != current.Money)
+		gameEvents.OnMoneyAdded -= OnMoneyChanged;
+		gameEvents.OnMoneySpent -= OnMoneyChanged;
+		gameEvents.OnRestart -= RefreshImmediate;
+		gameEvents.OnPrestigeChange -= RefreshImmediate;
+	}
+
+	private void Update()
+	{
+		if (Text == null)
 		{
-			SetMoney(current.Money);
+			return;
+		}
+		BigInteger currentMoney = GetCurrentMoney();
+		if (!hasRendered || targetAmount != currentMoney)
+		{
+			SetMoney(currentMoney);
 		}
 	}
 
 	public void SetMoney(BigInteger newAmount)
+	{
+		SetMoney(newAmount, immediate: false);
+	}
+
+	private void SetMoney(BigInteger newAmount, bool immediate)
 	{
 		if (Text == null)
 		{
 			return;
 		}
 		ConfigureText();
+		if (immediate)
+		{
+			if (animRoutine != null)
+			{
+				StopCoroutine(animRoutine);
+				animRoutine = null;
+			}
+			displayedAmount = newAmount;
+			targetAmount = newAmount;
+			UpdateText(newAmount);
+			hasRendered = true;
+			return;
+		}
 		if (animRoutine != null)
 		{
 			StopCoroutine(animRoutine);
 		}
-		animRoutine = StartCoroutine(AnimateMoney(lastAmountBig, newAmount));
-		lastGoal = newAmount;
-		lastAmountBig = newAmount;
+		animRoutine = StartCoroutine(AnimateMoney(displayedAmount, newAmount));
+		targetAmount = newAmount;
 		hasRendered = true;
 	}
 
@@ -60,10 +101,12 @@ public class MoneyText : MonoBehaviour
 			elapsed += Time.deltaTime;
 			float t = Mathf.Clamp01(elapsed / animationDuration);
 			t = Mathf.SmoothStep(0f, 1f, t);
-			lastAmountBig = BigIntegerLerp(from, to, t);
-			UpdateText(lastAmountBig);
+			displayedAmount = BigIntegerLerp(from, to, t);
+			UpdateText(displayedAmount);
 			yield return null;
 		}
+		displayedAmount = to;
+		animRoutine = null;
 		UpdateText(to);
 	}
 
@@ -102,5 +145,20 @@ public class MoneyText : MonoBehaviour
 		BigInteger bigInteger2 = 1000000;
 		BigInteger bigInteger3 = b - a;
 		return a + bigInteger3 * bigInteger / bigInteger2;
+	}
+
+	private void OnMoneyChanged(int amount)
+	{
+		SetMoney(GetCurrentMoney());
+	}
+
+	private void RefreshImmediate()
+	{
+		SetMoney(GetCurrentMoney(), immediate: true);
+	}
+
+	private BigInteger GetCurrentMoney()
+	{
+		return SaveManager.Current != null && SaveManager.Current.SaveData != null ? SaveManager.Current.SaveData.Money : 0;
 	}
 }

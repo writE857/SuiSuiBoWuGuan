@@ -35,13 +35,14 @@ public class BrickShop : Singleton<BrickShop>
 
 	public float buyInterval = 0.3f;
 
+	private Tweener hideTween;
+
 	public bool canBuy => nextBuy < Time.time;
 
 	private void Start()
 	{
 		RefreshUI();
-		GoDown();
-		IsHidden = true;
+		SetHiddenState(hidden: true, instant: true);
 		StartCoroutine(Do_Nuclear());
 	}
 
@@ -58,15 +59,7 @@ public class BrickShop : Singleton<BrickShop>
 		IsHidden = Singleton<GameSession>.Current.IsInMenu || Singleton<ArtifactOverlayDisplay>.Current.IsOpen || NuclearStone.IsBought;
 		if (IsHidden != IsDown)
 		{
-			if (IsHidden)
-			{
-				GoDown();
-			}
-			else
-			{
-				GoUp();
-			}
-			IsDown = IsHidden;
+			SetHiddenState(IsHidden);
 		}
 	}
 
@@ -77,6 +70,10 @@ public class BrickShop : Singleton<BrickShop>
 		if (Buttons.Count == num)
 		{
 			return;
+		}
+		for (int i = 0; i < Parent.childCount; i++)
+		{
+			Parent.GetChild(i).gameObject.SetActive(value: false);
 		}
 		Parent.Clear();
 		Buttons.Clear();
@@ -117,11 +114,26 @@ public class BrickShop : Singleton<BrickShop>
 
 	private void GoUp()
 	{
-		HideTransform.DOAnchorPosY(shownY, moveDuration).SetEase(Ease.OutQuad);
+		SetHiddenState(hidden: false);
 	}
 
 	private void GoDown()
 	{
-		HideTransform.DOAnchorPosY(hiddenY, moveDuration).SetEase(Ease.OutQuad);
+		SetHiddenState(hidden: true);
+	}
+
+	private void SetHiddenState(bool hidden, bool instant = false)
+	{
+		IsHidden = hidden;
+		IsDown = hidden;
+		hideTween?.Kill();
+		float targetY = hidden ? hiddenY : shownY;
+		if (instant || moveDuration <= 0f)
+		{
+			HideTransform.anchoredPosition = new Vector2(HideTransform.anchoredPosition.x, targetY);
+			hideTween = null;
+			return;
+		}
+		hideTween = HideTransform.DOAnchorPosY(targetY, moveDuration).SetEase(Ease.OutQuad);
 	}
 }

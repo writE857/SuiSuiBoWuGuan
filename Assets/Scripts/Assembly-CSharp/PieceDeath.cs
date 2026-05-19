@@ -14,6 +14,11 @@ public class PieceDeath : MonoBehaviour
 
 	public bool invertCurve = true;
 
+	private void Awake()
+	{
+		enabled = false;
+	}
+
 	public void CopyTo(PieceDeath other)
 	{
 		other.duration = duration;
@@ -39,6 +44,7 @@ public class PieceDeath : MonoBehaviour
 
 	public void StartDoing()
 	{
+		enabled = true;
 		IsDoing = true;
 		since = Time.time;
 		Object.Destroy(base.gameObject, duration);

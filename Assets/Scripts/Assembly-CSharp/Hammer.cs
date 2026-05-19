@@ -21,6 +21,17 @@ public class Hammer : Singleton<Hammer>
 		public float damageHPRatio;
 	}
 
+	private struct DamageTarget
+	{
+		public CubePiece piece;
+
+		public Vector3 hitPoint;
+
+		public float horizontalDistance;
+
+		public float depth;
+	}
+
 	public float debugInterval = 0.01f;
 
 	public float debugDamage = 5f;
@@ -53,6 +64,10 @@ public class Hammer : Singleton<Hammer>
 
 	public bool IsHitting;
 
+	private Vector3 damageOrigin;
+
+	private bool hasDamageOrigin;
+
 	public float flyForce = 1f;
 
 	public bool drawGizmo;
@@ -76,13 +91,21 @@ public class Hammer : Singleton<Hammer>
 
 	private RaycastHit[] hits = new RaycastHit[100];
 
+	private Collider[] overlapHits = new Collider[1024];
+
 	private List<Vector3> RayStartPoints = new List<Vector3>();
 
-	private readonly List<CubePiece> piecesInRangeBuffer = new List<CubePiece>(256);
+	private readonly List<DamageTarget> damageTargetsBuffer = new List<DamageTarget>(256);
 
-	private readonly HashSet<CubePiece> uniquePiecesBuffer = new HashSet<CubePiece>();
+	private readonly Dictionary<CubePiece, int> damageTargetIndexBuffer = new Dictionary<CubePiece, int>(256);
 
 	private readonly List<DamageData> damageBuffer = new List<DamageData>(256);
+
+	private const float RayOriginHeight = 1f;
+
+	private const float SurfacePadding = 0.02f;
+
+	private const float MinimumEdgeDamageRatio = 0.15f;
 
 	public float resolution = 0.1f;
 
@@ -99,6 +122,14 @@ public class Hammer : Singleton<Hammer>
 	public float maxDepth => HammerStats.Depth;
 
 	public float radius => SphereCollider.WorldRadius();
+
+	public Vector3 DamageOrigin => hasDamageOrigin ? damageOrigin : base.transform.position;
+
+	public void SetDamageOrigin(Vector3 origin)
+	{
+		damageOrigin = origin;
+		hasDamageOrigin = true;
+	}
 
 	private void Start()
 	{
@@ -164,8 +195,8 @@ public class Hammer : Singleton<Hammer>
 		{
 			SphereCollider.radius = HammerStats.Size * 1f;
 		}
-		List<CubePiece> piecesInRange = GetPiecesInRange();
-		List<DamageData> damages = GetDamages(piecesInRange);
+		List<DamageTarget> damageTargets = GetDamageTargets();
+		List<DamageData> damages = GetDamages(damageTargets);
 		float num = 0f;
 		foreach (DamageData item in damages)
 		{
@@ -205,10 +236,6 @@ public class Hammer : Singleton<Hammer>
 					item.piece.body.MovePosition(item.piece.transform.position + moveUpDistance * Vector3.up);
 					item.piece.body.velocity = item.distVForce.normalized * forceRange.GetRandomBetweenXY() * flyForce;
 				}
-				PieceDeath pieceDeath = item.piece.gameObject.AddComponent<PieceDeath>();
-				item.piece.PieceDeath = pieceDeath;
-				PieceDeath.CopyTo(pieceDeath);
-				pieceDeath.Init();
 			}
 		}
 		int num5 = Mathf.RoundToInt(num * (MoneyHitSkill.FinalValue / 100f));
@@ -216,61 +243,86 @@ public class Hammer : Singleton<Hammer>
 		{
 			Singleton<GameEvents>.Current.OnHammerIncome?.Invoke(num5);
 			Singleton<LootManager>.Current.AddMoney(num5);
-			Singleton<FloatingTextPool>.Current.SpawnMoney("$" + NumFormat.ToM1Decimal(num5), base.transform.position);
+			Singleton<FloatingTextPool>.Current.SpawnMoney("$" + NumFormat.ToM1Decimal(num5), DamageOrigin);
 		}
 		Singleton<GameEvents>.Current.OnHammerHit?.Invoke(num);
 		if (num >= 1f)
 		{
-			Singleton<FloatingTextPool>.Current.SpawnDamage(NumFormat.ToM1Decimal(num) ?? "", base.transform.position);
+			Singleton<FloatingTextPool>.Current.SpawnDamage(NumFormat.ToM1Decimal(num) ?? "", DamageOrigin);
 		}
 		if (damages.Count > 0)
 		{
-			Singleton<AudioPool>.Current.Play(BrickHitSFX, base.transform.position);
+			Singleton<AudioPool>.Current.Play(BrickHitSFX, DamageOrigin);
 		}
 	}
 
-	private List<CubePiece> GetPiecesInRange()
+	private List<DamageTarget> GetDamageTargets()
 	{
-		piecesInRangeBuffer.Clear();
-		uniquePiecesBuffer.Clear();
-		CalculateRayStartPoints();
-		Vector3 position = base.transform.position;
-		foreach (Vector3 rayStartPoint in RayStartPoints)
+		damageTargetsBuffer.Clear();
+		damageTargetIndexBuffer.Clear();
+		Vector3 position = DamageOrigin;
+		float activeRadius = Mathf.Max(radius, 0.001f);
+		float activeDepth = Mathf.Max(maxDepth, 0.001f);
+		int count = Physics.OverlapSphereNonAlloc(position, activeRadius + SurfacePadding, overlapHits, HammerLayerMask, QueryTriggerInteraction.Ignore);
+		for (int i = 0; i < count; i++)
 		{
-			int num = Physics.RaycastNonAlloc(new Ray(position + rayStartPoint + Vector3.up, Vector3.down), hits, float.MaxValue, HammerLayerMask);
-			for (int i = 0; i < num; i++)
+			Collider collider = overlapHits[i];
+			if (collider == null)
 			{
-				CubePiece component = hits[i].collider.GetComponent<CubePiece>();
-				if (!(component != null))
-				{
-					continue;
-				}
-				if (component.HitAnyway)
-				{
-					if (uniquePiecesBuffer.Add(component))
-					{
-						piecesInRangeBuffer.Add(component);
-					}
-				}
-				else if (!((component.transform.position - position).y < 0f - maxDepth) && uniquePiecesBuffer.Add(component))
-				{
-					piecesInRangeBuffer.Add(component);
-				}
+				continue;
 			}
+			AddDamageTarget(collider.GetComponentInParent<CubePiece>(), collider.ClosestPoint(position), position, activeRadius, activeDepth);
 		}
-		return piecesInRangeBuffer;
+		return damageTargetsBuffer;
 	}
 
-	private List<DamageData> GetDamages(List<CubePiece> pieces)
+	private void AddDamageTarget(CubePiece piece, Vector3 hitPoint, Vector3 origin, float activeRadius, float activeDepth)
+	{
+		if (piece == null || !piece.IsAlive)
+		{
+			return;
+		}
+		Vector3 offset = hitPoint - origin;
+		float horizontalDistance = offset.X0Z().magnitude;
+		float depth = Mathf.Max(0f, origin.y - hitPoint.y);
+		if (!piece.HitAnyway && (horizontalDistance > activeRadius + SurfacePadding || depth > activeDepth + SurfacePadding))
+		{
+			return;
+		}
+		DamageTarget target = new DamageTarget
+		{
+			piece = piece,
+			hitPoint = hitPoint,
+			horizontalDistance = horizontalDistance,
+			depth = depth
+		};
+		if (!damageTargetIndexBuffer.TryGetValue(piece, out int index))
+		{
+			damageTargetIndexBuffer.Add(piece, damageTargetsBuffer.Count);
+			damageTargetsBuffer.Add(target);
+			return;
+		}
+		DamageTarget current = damageTargetsBuffer[index];
+		float currentScore = current.horizontalDistance + current.depth * 2f;
+		float targetScore = target.horizontalDistance + target.depth * 2f;
+		if (targetScore < currentScore)
+		{
+			damageTargetsBuffer[index] = target;
+		}
+	}
+
+	private List<DamageData> GetDamages(List<DamageTarget> targets)
 	{
 		damageBuffer.Clear();
-		foreach (CubePiece piece in pieces)
+		float activeRadius = Mathf.Max(radius, 0.001f);
+		float activeDepth = Mathf.Max(maxDepth, 0.001f);
+		foreach (DamageTarget target in targets)
 		{
+			CubePiece piece = target.piece;
 			Vector3 distVForce = piece.transform.position - forceSource.position;
-			Vector3 vector = piece.transform.position - base.transform.position;
-			float value = 1f - vector.X0Z().magnitude / SphereCollider.radius;
-			float num = Mathf.Abs(vector.y);
-			float value2 = 1f - num / maxDepth;
+			Vector3 vector = piece.transform.position - target.hitPoint;
+			float value = 1f - target.horizontalDistance / activeRadius;
+			float value2 = 1f - target.depth / activeDepth;
 			value2 = Mathf.Clamp01(value2);
 			value = Mathf.Clamp01(value);
 			value *= value2;
@@ -279,6 +331,10 @@ public class Hammer : Singleton<Hammer>
 			if (piece.HitAnyway)
 			{
 				num2 = Damage;
+			}
+			else if (num2 <= 0f)
+			{
+				num2 = Damage * MinimumEdgeDamageRatio;
 			}
 			float damageHPRatio = Mathf.Clamp01(num2 / piece.maxHp);
 			damageBuffer.Add(new DamageData
@@ -300,7 +356,7 @@ public class Hammer : Singleton<Hammer>
 		{
 			return;
 		}
-		Vector3 position = base.transform.position;
+		Vector3 position = DamageOrigin;
 		rayCount = 0;
 		CalculateRayStartPoints();
 		foreach (Vector3 rayStartPoint in RayStartPoints)
@@ -328,13 +384,15 @@ public class Hammer : Singleton<Hammer>
 		lastRadius = radius;
 		lastResolution = resolution;
 		RayStartPoints.Clear();
-		rayCount = 0;
-		for (float num = 0f - radius; num <= radius; num += resolution)
+		RayStartPoints.Add(Vector3.zero);
+		rayCount = 1;
+		float step = Mathf.Clamp(resolution, radius / 8f, radius);
+		for (float num = 0f - radius; num <= radius; num += step)
 		{
-			for (float num2 = 0f - radius; num2 <= radius; num2 += resolution)
+			for (float num2 = 0f - radius; num2 <= radius; num2 += step)
 			{
 				Vector3 item = new Vector3(num, 0f, num2);
-				if (item.magnitude <= radius)
+				if (item.magnitude <= radius && item.sqrMagnitude > 0.000001f)
 				{
 					RayStartPoints.Add(item);
 					rayCount++;

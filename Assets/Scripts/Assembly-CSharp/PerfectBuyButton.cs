@@ -71,6 +71,14 @@ public class PerfectBuyButton : MonoBehaviour, IPointerEnterHandler, IEventSyste
 
 	private Tweener waveTween;
 
+	private Tweener hoverTween;
+
+	private Tweener pressTween;
+
+	private Tweener declineTween;
+
+	private int lastPrice = int.MinValue;
+
 	public string test => int.MaxValue.ToString();
 
 	private void Start()
@@ -90,22 +98,39 @@ public class PerfectBuyButton : MonoBehaviour, IPointerEnterHandler, IEventSyste
 		WaveOnHovered();
 	}
 
+	private void OnDisable()
+	{
+		hoverTween?.Kill();
+		pressTween?.Kill();
+		declineTween?.Kill();
+		waveTween?.Kill();
+		IsHovered = false;
+		hoverBlend = 0f;
+		waveTransform.anchoredPosition = Vector2.zero;
+		waveTransform.localEulerAngles = Vector3.zero;
+		waveTransform.localScale = Vector3.one;
+	}
+
 	private void WaveOnHovered()
 	{
 		hoverBlend = Mathf.MoveTowards(hoverBlend, IsHovered ? 1f : 0f, Time.deltaTime * blendSpeed);
-		if (!(hoverBlend <= 0f))
+		if (hoverBlend <= 0f)
 		{
-			noiseTime += Time.deltaTime * noiseSpeed;
-			float x = Mathf.PerlinNoise(noiseTime, 0f) - 0.5f;
-			float y = Mathf.PerlinNoise(0f, noiseTime) - 0.5f;
-			float num = Mathf.PerlinNoise(noiseTime, noiseTime) - 0.5f;
-			Vector2 anchoredPosition = new Vector2(x, y) * positionAmplitude * hoverBlend;
-			Vector3 localEulerAngles = new Vector3(0f, 0f, num * rotationAmplitude * hoverBlend);
-			Vector3 vector = Vector3.one * (num * scaleAmplitude * hoverBlend);
-			waveTransform.anchoredPosition = anchoredPosition;
-			waveTransform.localEulerAngles = localEulerAngles;
-			waveTransform.localScale = Vector3.one + vector;
+			waveTransform.anchoredPosition = Vector2.zero;
+			waveTransform.localEulerAngles = Vector3.zero;
+			waveTransform.localScale = Vector3.one;
+			return;
 		}
+		noiseTime += Time.deltaTime * noiseSpeed;
+		float x = Mathf.PerlinNoise(noiseTime, 0f) - 0.5f;
+		float y = Mathf.PerlinNoise(0f, noiseTime) - 0.5f;
+		float num = Mathf.PerlinNoise(noiseTime, noiseTime) - 0.5f;
+		Vector2 anchoredPosition = new Vector2(x, y) * positionAmplitude * hoverBlend;
+		Vector3 localEulerAngles = new Vector3(0f, 0f, num * rotationAmplitude * hoverBlend);
+		Vector3 vector = Vector3.one * (num * scaleAmplitude * hoverBlend);
+		waveTransform.anchoredPosition = anchoredPosition;
+		waveTransform.localEulerAngles = localEulerAngles;
+		waveTransform.localScale = Vector3.one + vector;
 	}
 
 	private void BuyClicked()
@@ -126,11 +151,20 @@ public class PerfectBuyButton : MonoBehaviour, IPointerEnterHandler, IEventSyste
 
 	private void RefreshUI()
 	{
+		if (Price == lastPrice)
+		{
+			return;
+		}
+		lastPrice = Price;
 		PriceText.text = "$" + Price.ToString("N0");
 	}
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
+		if (IsHovered)
+		{
+			return;
+		}
 		Singleton<AudioPool>.Current.Play(hoverSFX, base.transform.position);
 		IsHovered = true;
 		GoUp();
@@ -138,33 +172,40 @@ public class PerfectBuyButton : MonoBehaviour, IPointerEnterHandler, IEventSyste
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
+		if (!IsHovered)
+		{
+			return;
+		}
 		waveTween?.Kill();
-		Singleton<HoverInfo>.Current.CurrentHoveredArtifactGroup = null;
 		IsHovered = false;
 		GoBack();
 	}
 
 	private void GoUp()
 	{
-		dragTransform.DOAnchorPosY(yUpOnHover, upDuration).SetEase(Ease.OutQuad);
+		hoverTween?.Kill();
+		hoverTween = dragTransform.DOAnchorPosY(yUpOnHover, upDuration).SetEase(Ease.OutQuad);
 	}
 
 	private void GoBack()
 	{
-		dragTransform.DOAnchorPosY(yUpDefault, upDuration).SetEase(Ease.OutQuad);
+		hoverTween?.Kill();
+		hoverTween = dragTransform.DOAnchorPosY(yUpDefault, upDuration).SetEase(Ease.OutQuad);
 	}
 
 	private void PlayClickAccepted()
 	{
-		dragTransform.DOScale(originalScale * pressScale, animDuration).SetEase(Ease.InOutQuad).OnComplete(delegate
+		pressTween?.Kill();
+		pressTween = dragTransform.DOScale(originalScale * pressScale, animDuration).SetEase(Ease.InOutQuad).OnComplete(delegate
 		{
-			dragTransform.DOScale(originalScale, animDuration).SetEase(Ease.OutBack);
+			pressTween = dragTransform.DOScale(originalScale, animDuration).SetEase(Ease.OutBack);
 		});
 	}
 
 	private void PlayClickDeclined()
 	{
-		dragTransform.DOShakeAnchorPos(animDuration, new Vector2(declineShakeStrength, 0f), declineShakeVibrato).SetEase(Ease.OutQuad);
+		declineTween?.Kill();
+		declineTween = dragTransform.DOShakeAnchorPos(animDuration, new Vector2(declineShakeStrength, 0f), declineShakeVibrato).SetEase(Ease.OutQuad);
 		FlashDeclineColor();
 	}
 
@@ -172,6 +213,8 @@ public class PerfectBuyButton : MonoBehaviour, IPointerEnterHandler, IEventSyste
 	{
 		foreach (Graphic g in graphics)
 		{
+			g.DOKill();
+			g.color = originalColors[g];
 			g.DOColor(declineColor, colorFlashDuration).SetLoops(2, LoopType.Yoyo).SetEase(Ease.OutQuad)
 				.OnKill(delegate
 				{

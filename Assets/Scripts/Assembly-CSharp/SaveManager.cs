@@ -64,7 +64,6 @@ public class SaveManager : MonoBehaviour
 		if (SaveData != null)
 		{
 			PlayerPrefsSaveBackend.Save(SaveData);
-			Debug.Log("Progress Saved");
 		}
 	}
 

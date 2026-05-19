@@ -1,25 +1,52 @@
-using System.Collections;
 using UnityEngine;
 
 public class AutoSave : MonoBehaviour
 {
-	public int intervalSeconds = 15;
+	public int intervalSeconds = 60;
 
-	private void Start()
+	private float nextSaveTime;
+
+	private void OnEnable()
 	{
-		StartCoroutine(Do_AutoSave());
+		nextSaveTime = Time.unscaledTime + intervalSeconds;
 	}
 
-	private IEnumerator Do_AutoSave()
+	private void Update()
 	{
-		while (true)
+		if (!Singleton<GameSession>.Current.IsGameStarted)
 		{
-			yield return new WaitForSeconds(intervalSeconds);
-			if (Singleton<GameSession>.Current.IsGameStarted)
-			{
-				SaveManager.Current.Save();
-				Debug.Log("Autosave");
-			}
+			return;
 		}
+		if (Time.unscaledTime < nextSaveTime)
+		{
+			return;
+		}
+		SaveNow();
+	}
+
+	private void OnApplicationPause(bool pauseStatus)
+	{
+		if (pauseStatus)
+		{
+			SaveNow();
+		}
+	}
+
+	private void OnApplicationFocus(bool hasFocus)
+	{
+		if (!hasFocus)
+		{
+			SaveNow();
+		}
+	}
+
+	private void SaveNow()
+	{
+		if (!Singleton<GameSession>.Current.IsGameStarted)
+		{
+			return;
+		}
+		nextSaveTime = Time.unscaledTime + intervalSeconds;
+		SaveManager.Current.Save();
 	}
 }
