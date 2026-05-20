@@ -16,7 +16,7 @@ MonoBehaviour:
   MaxLevel: 25
   DisplayName: 伤害
   BasePrice: 400
-  Icon: {fileID: 21300000, guid: cc38a8206f9132e4f8f7d4ac69e709d6, type: 2}
+  Icon: {fileID: 21300000, guid: baf202958f4401841a043ec822a8149e, type: 3}
   Description: 提高锤子伤害，用来应对更坚硬的岩石和石块。
   SteamAchievement: {fileID: 11400000, guid: 0985c9d180a080b4eb81cf6eb465b7ec, type: 2}
   Prices: 78000000c80000002c01000084030000080700008c0a0000a41f0000483f0000ec5e0000c41c0100883902004c560300e4020a00c8051400ac081e00041a5a00c00db400a0140e0140b72803c0c2da060068890980b2e60e00d012130057a616

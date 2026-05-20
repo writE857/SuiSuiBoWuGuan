@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   DisplayName: 恐龙时代
   GROUPID: DINO
-  Barcode: {fileID: 21300000, guid: dbfc29c21e6ae384fa3e102fb8416542, type: 2}
+  Barcode: {fileID: 21300000, guid: ebdb4ecc5f321b744a54e6e73aac9bc8, type: 3}
   Artifacts:
   - {fileID: 114243736805655561, guid: f08d88c22b7fe3943847ef2dde81af51, type: 2}
   - {fileID: 114243736805655561, guid: d2c70e7be980e2c49a4f5ebe5b25aff9, type: 2}

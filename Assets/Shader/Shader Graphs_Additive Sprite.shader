@@ -3,6 +3,7 @@ Shader "Shader Graphs/Additive Sprite"
 	Properties
 	{
 		_Color ("Color", Color) = (1,1,1,1)
+		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
 		[NoScaleOffset] _BaseMap ("BaseMap", 2D) = "white" {}
 		[HideInInspector] White ("Color", Color) = (1,1,1,1)
 	}
@@ -20,7 +21,7 @@ Shader "Shader Graphs/Additive Sprite"
 		Cull Off
 		Lighting Off
 		ZWrite Off
-		Blend One One
+		Blend SrcAlpha One
 
 		Pass
 		{
@@ -43,22 +44,22 @@ Shader "Shader Graphs/Additive Sprite"
 				fixed4 color : COLOR;
 			};
 
-			sampler2D _BaseMap;
-			float4 _BaseMap_ST;
+			sampler2D _MainTex;
+			float4 _MainTex_ST;
 			fixed4 _Color;
 
 			v2f vert(appdata v)
 			{
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
-				o.uv = TRANSFORM_TEX(v.uv, _BaseMap);
+				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.color = v.color * _Color;
 				return o;
 			}
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				return tex2D(_BaseMap, i.uv) * i.color;
+				return tex2D(_MainTex, i.uv) * i.color;
 			}
 			ENDCG
 		}

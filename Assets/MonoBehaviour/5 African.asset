@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   DisplayName: 非洲传承
   GROUPID: AFRICA
-  Barcode: {fileID: 21300000, guid: e6b7f278cce4a06409d7eff1f4027fed, type: 2}
+  Barcode: {fileID: 21300000, guid: 98deaf20f7f414348a8b67f6ade07456, type: 3}
   Artifacts:
   - {fileID: 114243736805655561, guid: 7b653519f912beb40ac72566f84bc7f2, type: 2}
   - {fileID: 114243736805655561, guid: 1d47c06b643055744a5f6054d50c1eab, type: 2}

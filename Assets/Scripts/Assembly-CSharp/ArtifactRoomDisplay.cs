@@ -17,17 +17,18 @@ public class ArtifactRoomDisplay : MonoBehaviour
 
 	public List<BoxCollider> Colliders = new List<BoxCollider>();
 
-	private const float MaxDisplayWidth = 0.28f;
-
-	private const float MaxDisplayHeight = 0.28f;
-
 	private Vector3 initialImageScale = Vector3.one;
 
 	private bool cachedInitialImageScale;
 
+	private Color initialImageColor = Color.white;
+
+	private bool cachedInitialImageColor;
+
 	private void Start()
 	{
 		CacheInitialImageScale();
+		CacheInitialImageColor();
 		GetComponentsInChildren(includeInactive: true, Colliders);
 		if (Artifact == null)
 		{
@@ -46,9 +47,10 @@ public class ArtifactRoomDisplay : MonoBehaviour
 		{
 			return;
 		}
-		if (Artifact.IsUnlocked)
+		bool isAvailable = Artifact.ArtifactGroup != null && Artifact.ArtifactGroup.IsAvailable(Artifact);
+		if (Artifact.IsUnlocked || isAvailable)
 		{
-			Show();
+			Show(Artifact.IsUnlocked);
 		}
 		else
 		{
@@ -72,6 +74,7 @@ public class ArtifactRoomDisplay : MonoBehaviour
 		if (ImageDisplay != null)
 		{
 			ImageDisplay.enabled = false;
+			RestoreImageColor();
 		}
 		if (Light != null)
 		{
@@ -79,12 +82,13 @@ public class ArtifactRoomDisplay : MonoBehaviour
 		}
 	}
 
-	private void Show()
+	private void Show(bool isUnlocked)
 	{
 		if (ImageDisplay == null)
 		{
 			return;
 		}
+		CacheInitialImageColor();
 		ImageDisplay.sprite = Artifact.MuseumImage;
 		if (ImageDisplay.sprite == null)
 		{
@@ -96,11 +100,12 @@ public class ArtifactRoomDisplay : MonoBehaviour
 			return;
 		}
 		ImageDisplay.enabled = true;
+		ImageDisplay.color = isUnlocked ? initialImageColor : new Color(initialImageColor.r, initialImageColor.g, initialImageColor.b, initialImageColor.a * 0.45f);
 		if (Light != null)
 		{
-			Light.SetActiveSmart(newState: true);
+			Light.SetActiveSmart(isUnlocked);
 		}
-		FitImageToScreenSlot();
+		RestoreImageScale();
 	}
 
 	private void CacheInitialImageScale()
@@ -113,34 +118,29 @@ public class ArtifactRoomDisplay : MonoBehaviour
 		cachedInitialImageScale = true;
 	}
 
-	private void FitImageToScreenSlot()
+	private void CacheInitialImageColor()
+	{
+		if (ImageDisplay == null || cachedInitialImageColor)
+		{
+			return;
+		}
+		initialImageColor = ImageDisplay.color;
+		cachedInitialImageColor = true;
+	}
+
+	private void RestoreImageColor()
+	{
+		if (ImageDisplay == null || !cachedInitialImageColor)
+		{
+			return;
+		}
+		ImageDisplay.color = initialImageColor;
+	}
+
+	private void RestoreImageScale()
 	{
 		CacheInitialImageScale();
-		if (ImageDisplay.sprite == null)
-		{
-			return;
-		}
 		ImageDisplay.transform.localScale = initialImageScale;
-		Vector3 size = ImageDisplay.sprite.bounds.size;
-		if (size.x <= 0f || size.y <= 0f)
-		{
-			Rect rect = ImageDisplay.sprite.rect;
-			float pixelsPerUnit = ImageDisplay.sprite.pixelsPerUnit;
-			if (pixelsPerUnit > 0f)
-			{
-				size = new Vector3(rect.width / pixelsPerUnit, rect.height / pixelsPerUnit, 0f);
-			}
-		}
-		if (size.x <= 0f || size.y <= 0f)
-		{
-			return;
-		}
-		float scale = Mathf.Min(MaxDisplayWidth / size.x, MaxDisplayHeight / size.y);
-		if (float.IsNaN(scale) || float.IsInfinity(scale) || scale >= 1f)
-		{
-			return;
-		}
-		ImageDisplay.transform.localScale = initialImageScale * scale;
 	}
 
 	public void OnPointerEnter()

@@ -27,7 +27,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709254077376921}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0544, y: 0, z: 0.045}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,6 +34,7 @@ Transform:
   m_Children:
   - {fileID: 4061268324235159}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!114 &114703437598541787
 MonoBehaviour:
@@ -74,21 +74,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709254077376921}
-  serializedVersion: 5
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDamping: 0.35
-  m_AngularDamping: 10
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -122,10 +111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArtifactGroup: {fileID: 11400000, guid: 0a0d2479071503644a696b42a2cf1e1c, type: 2}
-  MuseumImage: {fileID: 21300000, guid: 9635c43cd095a3f488dcc0c9baca29c9, type: 2}
+  MuseumImage: {fileID: 21300000, guid: 417f6f3723c6efd4bb0756e34abe5fe4, type: 3}
   _ID: 714536035
-  DisplayName: 圣甲虫
-  Description: 推粪球的甲虫，后来成了重生与好运的神圣象征。
+  DisplayName: "\u5723\u7532\u866B"
+  Description: "\u63A8\u7CAA\u7403\u7684\u7532\u866B\uFF0C\u540E\u6765\u6210\u4E86\u91CD\u751F\u4E0E\u597D\u8FD0\u7684\u795E\u5723\u8C61\u5F81\u3002"
   Loot: {fileID: 114703437598541787}
   BaseValue: 145
   ItemCountTester: 1
@@ -155,13 +144,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724804207875695}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.67779136, y: 0.67779136, z: 0.67779136}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4061268324235159}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!33 &33709867586078768
 MeshFilter:
@@ -188,11 +177,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 9
   m_RendererPriority: 0
   m_Materials:
@@ -214,11 +198,9 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &64589667821646929
 MeshCollider:
@@ -228,17 +210,9 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724804207875695}
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
+  serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 9538a1cc078baa4409d56e6211d618c9, type: 2}
@@ -265,7 +239,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730242686860875}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -273,5 +246,5 @@ Transform:
   m_Children:
   - {fileID: 4587765826080250}
   m_Father: {fileID: 4618682377417806}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
-

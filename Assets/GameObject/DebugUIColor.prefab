@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &1709254077376921
 GameObject:
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a6a87427e8e0fc4d81019f274d3f4bd, type: 2}
+  m_Sprite: {fileID: 21300000, guid: a5ccdb28ce47a9444a9a291b17f3eb81, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -618,7 +618,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 70b6a2496dea53f498dd583b85d5f9ee, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 995eb9f9824aa9c4f9fc703533501ada, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -676,7 +676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6e1ba8c711068cd41867b878c7186751, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 29cc7467fb02b0741bbe8f75f000103d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -840,7 +840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6e1ba8c711068cd41867b878c7186751, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 29cc7467fb02b0741bbe8f75f000103d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

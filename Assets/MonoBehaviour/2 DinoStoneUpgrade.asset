@@ -18,7 +18,7 @@ MonoBehaviour:
   MaxLevel: 2
   BasePrice: 25
   ExtraPricePerLevel: 25
-  Icon: {fileID: 21300000, guid: ebee02ed1ce10344283a9eb47553af90, type: 2}
+  Icon: {fileID: 21300000, guid: 0cb732b0aed59ab4fbf8c4ff45b81692, type: 3}
   BaseAmount: 0
   IncreasePerLevel: 1
   DebugSumPrice: 75

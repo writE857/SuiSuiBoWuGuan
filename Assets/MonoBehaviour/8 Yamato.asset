@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   DisplayName: 大和之魂
   GROUPID: YAMATO
-  Barcode: {fileID: 21300000, guid: 5fb34c36b5cc4c5418502c6f77a825ed, type: 2}
+  Barcode: {fileID: 21300000, guid: d3ba2dd330ae4114eb5a4df562cf8267, type: 3}
   Artifacts:
   - {fileID: 114243736805655561, guid: d93e49ebea0075b4d87ac3b747173f37, type: 2}
   - {fileID: 114243736805655561, guid: a9f2131623350f34eb36975bd7afb65a, type: 2}

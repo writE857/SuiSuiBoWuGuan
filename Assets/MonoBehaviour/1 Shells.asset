@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   DisplayName: 海床
   GROUPID: SHELLS
-  Barcode: {fileID: 21300000, guid: b3d1a16a58d77fe44a13868b397a8d89, type: 2}
+  Barcode: {fileID: 21300000, guid: 5641e13a2972b2f4a9836cec7b82f488, type: 3}
   Artifacts:
   - {fileID: 114243736805655561, guid: fcc30ffd37c2d6b4881ca68bb0b57f94, type: 2}
   - {fileID: 114243736805655561, guid: 93cb0ccc6894b9f46bcc85bb7cfd8a84, type: 2}

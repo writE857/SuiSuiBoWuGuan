@@ -27,7 +27,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709254077376921}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0472, y: 0, z: -0.001}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,6 +34,7 @@ Transform:
   m_Children:
   - {fileID: 4061268324235159}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!114 &114703437598541787
 MonoBehaviour:
@@ -74,21 +74,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709254077376921}
-  serializedVersion: 5
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDamping: 0.35
-  m_AngularDamping: 10
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -122,10 +111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArtifactGroup: {fileID: 11400000, guid: c3d8004519efb524696c29544d4c2d8b, type: 2}
-  MuseumImage: {fileID: 21300000, guid: f2e7aab281aac93488f1ba2bad1257e5, type: 2}
+  MuseumImage: {fileID: 21300000, guid: d3044f94db17444459e3c652a91b60fc, type: 3}
   _ID: 1184818197
-  DisplayName: 海螺
-  Description: 大自然的扩音器，请谨慎使用，以免召唤出生物或兄弟姐妹。
+  DisplayName: "\u6D77\u87BA"
+  Description: "\u5927\u81EA\u7136\u7684\u6269\u97F3\u5668\uFF0C\u8BF7\u8C28\u614E\u4F7F\u7528\uFF0C\u4EE5\u514D\u53EC\u5524\u51FA\u751F\u7269\u6216\u5144\u5F1F\u59D0\u59B9\u3002"
   Loot: {fileID: 114703437598541787}
   BaseValue: 7
   ItemCountTester: 1
@@ -155,13 +144,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724804207875695}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9636877, y: 0.96368736, z: 0.9636877}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4061268324235159}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!33 &33709867586078768
 MeshFilter:
@@ -188,11 +177,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 9
   m_RendererPriority: 0
   m_Materials:
@@ -214,11 +198,9 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &64589667821646929
 MeshCollider:
@@ -228,17 +210,9 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724804207875695}
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
+  serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 443f48294c11f95499bdaa47d9c989a0, type: 2}
@@ -265,7 +239,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730242686860875}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -273,5 +246,5 @@ Transform:
   m_Children:
   - {fileID: 4587765826080250}
   m_Father: {fileID: 4618682377417806}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
-

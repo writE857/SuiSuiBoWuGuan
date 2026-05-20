@@ -2,11 +2,11 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &1709254077376921
 GameObject:
-  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4730242686860875}
   - component: {fileID: 212724804207875695}
@@ -22,7 +22,6 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4730242686860875
 Transform:
-  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -34,10 +33,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!212 &212724804207875695
 SpriteRenderer:
-  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -53,11 +52,6 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -74,17 +68,15 @@ SpriteRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 184077749
-  m_SortingLayer: -2
+  m_SortingLayer: 0
   m_SortingOrder: -1
-  m_MaskInteraction: 1
-  m_Sprite: {fileID: 21300000, guid: 2ee18720bbd199344b01e7dd0366915d, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 0daf62527061b4749902084be0523530, type: 3}
   m_Color: {r: 1, g: 0.77963424, b: 0.2783019, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,6 +85,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &114618682377417806
 MonoBehaviour:
@@ -104,8 +97,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31766f611f1676dce4e34f1b3acf6008, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   speedVariation: 0.5
   speed: 0.015
   chanceToStopPerSec: 0.2
@@ -128,8 +121,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9a9173b59be01f467f70b79e94c212b, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   Renderer: {fileID: 212724804207875695}
   SyncRenderers: []
 --- !u!114 &114884547391421755
@@ -142,18 +135,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6bd2f55a7866fb579cd3f5b146bd4b7, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   frames:
-  - {fileID: 21300000, guid: 58a5a1c871b2ea545b46112bccec5f15, type: 2}
-  - {fileID: 21300000, guid: 2d09335adeaba74478f137fcf155dcec, type: 2}
-  - {fileID: 21300000, guid: b77a901344d1b3643ae80f26c6806bec, type: 2}
-  - {fileID: 21300000, guid: ba970e0a38569d34689b0183c2d59dd0, type: 2}
-  - {fileID: 21300000, guid: ea3db30ecde7e3649883570fe4cd544f, type: 2}
-  - {fileID: 21300000, guid: bd71fdc588222a849b7ccafc6d71fd80, type: 2}
-  - {fileID: 21300000, guid: 946c9c17089c4d24e939616bf9c0b0dd, type: 2}
-  - {fileID: 21300000, guid: ab53afd752a67aa45b84efb0bb98ba71, type: 2}
+  - {fileID: 6447307689823713583, guid: 25ad851d52bfa3347b1582dc91dfa06a, type: 3}
+  - {fileID: 2556679018979962367, guid: 25ad851d52bfa3347b1582dc91dfa06a, type: 3}
+  - {fileID: 7035862461445791782, guid: 25ad851d52bfa3347b1582dc91dfa06a, type: 3}
+  - {fileID: 2507452751913901082, guid: 25ad851d52bfa3347b1582dc91dfa06a, type: 3}
+  - {fileID: 3371726117588033798, guid: 25ad851d52bfa3347b1582dc91dfa06a, type: 3}
+  - {fileID: -7621233483066205927, guid: 25ad851d52bfa3347b1582dc91dfa06a, type: 3}
+  - {fileID: 2574062862259720717, guid: 25ad851d52bfa3347b1582dc91dfa06a, type: 3}
+  - {fileID: -7441938363290638051, guid: 25ad851d52bfa3347b1582dc91dfa06a, type: 3}
   fps: 12
   loop: 1
   sr: {fileID: 212724804207875695}
-

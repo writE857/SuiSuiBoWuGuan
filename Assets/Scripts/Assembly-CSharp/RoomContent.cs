@@ -5,6 +5,20 @@ using UnityEngine;
 
 public class RoomContent : Singleton<RoomContent>
 {
+	private const string RoomRootName = "Rooms";
+
+	private const string RoomBackgroundName = "Background";
+
+	private const string RoomSpriteSortingLayer = "Sprites";
+
+	private const string RoomBackgroundSortingLayer = "Sprite BG";
+
+	private const int RoomBackgroundSortingOrder = -32768;
+
+	private const int RoomMaskFrontSortingOrder = 32767;
+
+	private const int DefaultSortingLayerID = 0;
+
 	public TMP_Text Text;
 
 	public float TitleDuration = 0.2f;
@@ -39,7 +53,82 @@ public class RoomContent : Singleton<RoomContent>
 		if (RoomContainerParent != null)
 		{
 			RoomContainerParent.GetComponentsInChildren(includeInactive: true, Rooms);
+			EnsureRoomRenderOrder();
 		}
+	}
+
+	private void EnsureRoomRenderOrder()
+	{
+		Transform roomRoot = FindRoomRoot();
+		if (roomRoot == null)
+		{
+			return;
+		}
+		EnsureRoomMaskRange(roomRoot);
+		foreach (SpriteRenderer spriteRenderer in roomRoot.GetComponentsInChildren<SpriteRenderer>(includeInactive: true))
+		{
+			if (spriteRenderer == null)
+			{
+				continue;
+			}
+			if (spriteRenderer.gameObject.name == RoomBackgroundName)
+			{
+				TrySetSortingLayer(spriteRenderer, RoomBackgroundSortingLayer);
+				spriteRenderer.sortingOrder = RoomBackgroundSortingOrder;
+			}
+			else
+			{
+				TrySetSortingLayer(spriteRenderer, RoomSpriteSortingLayer);
+			}
+			spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+		}
+	}
+
+	private void EnsureRoomMaskRange(Transform roomRoot)
+	{
+		foreach (SpriteMask spriteMask in roomRoot.GetComponentsInChildren<SpriteMask>(includeInactive: true))
+		{
+			if (spriteMask == null)
+			{
+				continue;
+			}
+			spriteMask.isCustomRangeActive = true;
+			spriteMask.backSortingLayerID = GetSortingLayerIDOrDefault(RoomBackgroundSortingLayer);
+			spriteMask.frontSortingLayerID = GetSortingLayerIDOrDefault(RoomSpriteSortingLayer);
+			spriteMask.backSortingOrder = RoomBackgroundSortingOrder;
+			spriteMask.frontSortingOrder = RoomMaskFrontSortingOrder;
+		}
+	}
+
+	private Transform FindRoomRoot()
+	{
+		Transform current = RoomContainerParent;
+		while (current != null)
+		{
+			if (current.name == RoomRootName)
+			{
+				return current;
+			}
+			current = current.parent;
+		}
+		return RoomContainerParent;
+	}
+
+	private static void TrySetSortingLayer(SpriteRenderer spriteRenderer, string sortingLayerName)
+	{
+		spriteRenderer.sortingLayerID = GetSortingLayerIDOrDefault(sortingLayerName);
+	}
+
+	private static int GetSortingLayerIDOrDefault(string sortingLayerName)
+	{
+		foreach (SortingLayer sortingLayer in SortingLayer.layers)
+		{
+			if (sortingLayer.name == sortingLayerName)
+			{
+				return sortingLayer.id;
+			}
+		}
+		return DefaultSortingLayerID;
 	}
 
 	private void Update()
@@ -64,19 +153,18 @@ public class RoomContent : Singleton<RoomContent>
 
 	private ArtifactGroup ResolveShownGroup()
 	{
-		ArtifactGroup artifactGroup = null;
 		HoverInfo hoverInfo = Singleton<HoverInfo>.Current;
 		if (hoverInfo != null)
 		{
-			artifactGroup = hoverInfo.CurrentBrickArtifactGroup;
-			if (hoverInfo.CurrentHoveredArtifactGroup != null)
+			ArtifactGroup hoverGroup = hoverInfo.ArtifactGroup;
+			if (hoverGroup != null)
 			{
-				artifactGroup = hoverInfo.CurrentHoveredArtifactGroup;
+				return hoverGroup;
 			}
-		}
-		if (artifactGroup != null)
-		{
-			return artifactGroup;
+			if (hoverInfo.CurrentBrickArtifactGroup != null)
+			{
+				return hoverInfo.CurrentBrickArtifactGroup;
+			}
 		}
 		BrickTable brickTable = Singleton<BrickTable>.Current;
 		if (brickTable != null && brickTable.CurrentBrick != null)

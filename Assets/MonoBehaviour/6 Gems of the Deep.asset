@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   DisplayName: 深海宝石
   GROUPID: AQUATIC
-  Barcode: {fileID: 21300000, guid: 96b11248c2a4f7c42bac5a98220a1dbe, type: 2}
+  Barcode: {fileID: 21300000, guid: eeb6c27a43f1d734ca9909457deeebf0, type: 3}
   Artifacts:
   - {fileID: 114243736805655561, guid: 6cb61b8bb883d804088ad321003cdb3c, type: 2}
   - {fileID: 114243736805655561, guid: 4deec649b4f5e1146acdf11864ff3b4c, type: 2}

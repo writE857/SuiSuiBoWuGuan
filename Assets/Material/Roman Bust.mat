@@ -10,8 +10,7 @@ Material:
   m_Name: Roman Bust
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
-  - _DETAIL_MULX2
-  - _METALLICSPECGLOSSMAP
+  - _DETAIL_SCALED
   - _NORMALMAP
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -26,19 +25,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 8d9f6643c186e4840b7f5d7d86cb40b0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 882fc61de4b2f9145873b106b9355a63, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: f4c02ec8df84af444943b3c3bfca0849, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1a1cf1d25d7ed9f43a4346da8c18ddef, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 2800000, guid: 8d9f6643c186e4840b7f5d7d86cb40b0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 882fc61de4b2f9145873b106b9355a63, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
-        m_Texture: {fileID: 2800000, guid: 372019bfbf78eba4a8588f08e07e2edd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 46fd08b27a9497142982f64ba0b71d88, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
@@ -50,11 +49,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8d9f6643c186e4840b7f5d7d86cb40b0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 882fc61de4b2f9145873b106b9355a63, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 372019bfbf78eba4a8588f08e07e2edd, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -93,7 +92,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DetailAlbedoMapScale: 1
+    - _DetailAlbedoMapScale: 2
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
@@ -118,12 +117,12 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.8301887, g: 0.81844074, b: 0.81844074, a: 1}
-    - _Color: {r: 0.8301887, g: 0.81844074, b: 0.81844074, a: 1}
+    - _BaseColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+    - _Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &7862062209286366288
+--- !u!114 &67190781579581686
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
