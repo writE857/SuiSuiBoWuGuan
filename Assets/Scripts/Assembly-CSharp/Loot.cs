@@ -105,17 +105,22 @@ public class Loot : MonoBehaviour
 		StartCoroutine(DelayedCheck());
 	}
 
-	private IEnumerator DelayedCheck()
+	public void CheckInitialOverlapNow()
 	{
-		yield return new WaitForFixedUpdate();
 		CheckBlockers();
 		if (others.Count == 0)
 		{
 			UnityEngine.Object.Destroy(base.gameObject);
-			yield break;
+			return;
 		}
 		LastOverlapCount = others.Count;
 		didHaveAnyOverlap = true;
+	}
+
+	private IEnumerator DelayedCheck()
+	{
+		yield return new WaitForFixedUpdate();
+		CheckInitialOverlapNow();
 	}
 
 	private void CheckBlockers()
@@ -133,8 +138,8 @@ public class Loot : MonoBehaviour
 		CubeModel cubeModel = currentBrick != null ? currentBrick.CubeModel : null;
 		if (cubeModel != null)
 		{
-			CubePiece[] pieces = cubeModel.GetBrokenPieces();
-			for (int i = 0; pieces != null && i < pieces.Length; i++)
+			List<CubePiece> pieces = cubeModel.GetActiveBrokenPieces();
+			for (int i = 0; pieces != null && i < pieces.Count; i++)
 			{
 				CubePiece component = pieces[i];
 				if (component == null || !component.IsAlive)

@@ -42,7 +42,10 @@ public class PlayerTools : MonoBehaviour
 			bool canUseTool = !IsPointerOverUI();
 			PlaceOnSurface();
 			VisualObjects.SetActiveSmart(!Singleton<GameSession>.Current.IsInMenu);
-			LootMagnet.IsPulling = true;
+			if (LootMagnet != null)
+			{
+				LootMagnet.IsPulling = canUseTool && clickPressed;
+			}
 			if (canUseTool && clickStarted)
 			{
 				Hammer.Use();

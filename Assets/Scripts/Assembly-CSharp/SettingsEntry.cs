@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SettingsEntry : MonoBehaviour, IPointerEnterHandler, IEventSystemHandler, IPointerExitHandler, IPointerDownHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler
 {
@@ -47,11 +48,21 @@ public class SettingsEntry : MonoBehaviour, IPointerEnterHandler, IEventSystemHa
 
 	private void Start()
 	{
+		Button button = GetComponent<Button>();
+		if (button != null)
+		{
+			button.onClick.AddListener(SelectThisFromButton);
+		}
 		EventTriggerRelay leftButton = LeftButton;
 		leftButton.onPointerClick = (UnityAction)Delegate.Combine(leftButton.onPointerClick, new UnityAction(LeftClicked));
 		EventTriggerRelay rightButton = RightButton;
 		rightButton.onPointerClick = (UnityAction)Delegate.Combine(rightButton.onPointerClick, new UnityAction(RightClicked));
 		SetBlurred();
+	}
+
+	private void SelectThisFromButton()
+	{
+		SelectThis(null);
 	}
 
 	public void SetData(List<string> options, int startingIndex)
@@ -174,7 +185,6 @@ public class SettingsEntry : MonoBehaviour, IPointerEnterHandler, IEventSystemHa
 		if (eventSystem != null && eventSystem.currentSelectedGameObject != base.gameObject)
 		{
 			eventSystem.SetSelectedGameObject(base.gameObject, eventData);
-			return;
 		}
 		SetFocused();
 	}

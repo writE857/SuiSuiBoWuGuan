@@ -21,6 +21,10 @@ public class Brick : MonoBehaviour
 
 	public bool IsLootGenerated;
 
+	public int initialLootOverlapChecksPerFrame = 2;
+
+	private Coroutine initialLootOverlapRoutine;
+
 	public void ChangeState(bool _isFull)
 	{
 		ChangeState(_isFull, checkInitialLootOverlap: true);
@@ -38,10 +42,33 @@ public class Brick : MonoBehaviour
 
 	public void CheckInitialLootOverlaps()
 	{
-		for (int i = 0; i < LootGenerator.Loots.Count; i++)
+		if (initialLootOverlapRoutine != null)
 		{
-			LootGenerator.Loots[i].CheckInitialOverlap();
+			StopCoroutine(initialLootOverlapRoutine);
 		}
+		initialLootOverlapRoutine = StartCoroutine(CheckInitialLootOverlapsAsync());
+	}
+
+	private IEnumerator CheckInitialLootOverlapsAsync()
+	{
+		yield return new WaitForFixedUpdate();
+		System.Collections.Generic.List<Loot> loots = new System.Collections.Generic.List<Loot>(LootGenerator.Loots);
+		int checksThisFrame = 0;
+		for (int i = 0; i < loots.Count; i++)
+		{
+			Loot loot = loots[i];
+			if (loot != null)
+			{
+				loot.CheckInitialOverlapNow();
+			}
+			checksThisFrame++;
+			if (checksThisFrame >= initialLootOverlapChecksPerFrame)
+			{
+				checksThisFrame = 0;
+				yield return null;
+			}
+		}
+		initialLootOverlapRoutine = null;
 	}
 
 	public void UpdateVisuals()
@@ -58,7 +85,6 @@ public class Brick : MonoBehaviour
 			{
 				LootGenerator.Loots[i].didInit = true;
 			}
-			CubeModel.BeginBreakPreparation(Singleton<Hammer>.Current != null ? Singleton<Hammer>.Current.PieceDeath : null);
 		}
 	}
 

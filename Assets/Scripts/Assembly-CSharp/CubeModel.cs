@@ -14,6 +14,10 @@ public class CubeModel : MonoBehaviour
 
 	private CubePiece[] brokenPieces;
 
+	private readonly List<CubePiece> activeBrokenPieces = new List<CubePiece>(3000);
+
+	private bool brokenPieceOwnersAssigned;
+
 	private MeshRenderer[] previewRenderers;
 
 	private MeshRenderer[] brokenRenderers;
@@ -43,6 +47,20 @@ public class CubeModel : MonoBehaviour
 		if (Broken != null && brokenPieces == null)
 		{
 			brokenPieces = Broken.GetComponentsInChildren<CubePiece>(includeInactive: true);
+			brokenPieceOwnersAssigned = false;
+		}
+		if (!brokenPieceOwnersAssigned && brokenPieces != null)
+		{
+			activeBrokenPieces.Clear();
+			for (int i = 0; i < brokenPieces.Length; i++)
+			{
+				if (brokenPieces[i] != null)
+				{
+					brokenPieces[i].SetOwner(this, i, activeBrokenPieces.Count);
+					activeBrokenPieces.Add(brokenPieces[i]);
+				}
+			}
+			brokenPieceOwnersAssigned = true;
 		}
 		if (Broken != null && brokenColliders == null)
 		{
@@ -165,10 +183,64 @@ public class CubeModel : MonoBehaviour
 		return brokenPieces;
 	}
 
+	public List<CubePiece> GetActiveBrokenPieces()
+	{
+		CacheComponents();
+		return activeBrokenPieces;
+	}
+
 	public BoxCollider[] GetBrokenColliders()
 	{
 		CacheComponents();
 		return brokenColliders;
+	}
+
+	internal void NotifyPieceBroken(CubePiece piece, int arrayIndex, int activeIndex)
+	{
+		if (brokenPieces == null || piece == null)
+		{
+			return;
+		}
+		if (arrayIndex >= 0 && arrayIndex < brokenPieces.Length && brokenPieces[arrayIndex] == piece)
+		{
+			brokenPieces[arrayIndex] = null;
+			RemoveActivePiece(piece, activeIndex);
+			return;
+		}
+		for (int i = 0; i < brokenPieces.Length; i++)
+		{
+			if (brokenPieces[i] == piece)
+			{
+				brokenPieces[i] = null;
+				RemoveActivePiece(piece, activeIndex);
+				return;
+			}
+		}
+		RemoveActivePiece(piece, activeIndex);
+	}
+
+	private void RemoveActivePiece(CubePiece piece, int activeIndex)
+	{
+		if (activeBrokenPieces.Count == 0)
+		{
+			return;
+		}
+		if (activeIndex < 0 || activeIndex >= activeBrokenPieces.Count || activeBrokenPieces[activeIndex] != piece)
+		{
+			activeIndex = activeBrokenPieces.IndexOf(piece);
+			if (activeIndex < 0)
+			{
+				return;
+			}
+		}
+		int lastIndex = activeBrokenPieces.Count - 1;
+		CubePiece last = activeBrokenPieces[lastIndex];
+		activeBrokenPieces[activeIndex] = last;
+		activeBrokenPieces.RemoveAt(lastIndex);
+		if (activeIndex < activeBrokenPieces.Count && last != null)
+		{
+			last.SetOwnerActiveIndex(activeIndex);
+		}
 	}
 
 	public void BeginBreakPreparation(PieceDeath template)
@@ -226,6 +298,7 @@ public class CubeModel : MonoBehaviour
 				{
 					Object.Destroy(cubePiece.gameObject);
 					brokenPieces[i] = null;
+					RemoveActivePiece(cubePiece, -1);
 				}
 			}
 		}

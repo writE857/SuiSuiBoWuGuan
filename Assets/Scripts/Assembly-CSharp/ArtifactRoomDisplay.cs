@@ -48,9 +48,9 @@ public class ArtifactRoomDisplay : MonoBehaviour
 			return;
 		}
 		bool isAvailable = Artifact.ArtifactGroup != null && Artifact.ArtifactGroup.IsAvailable(Artifact);
-		if (Artifact.IsUnlocked || isAvailable)
+		if (Artifact.IsUnlocked)
 		{
-			Show(Artifact.IsUnlocked);
+			Show();
 		}
 		else
 		{
@@ -60,7 +60,7 @@ public class ArtifactRoomDisplay : MonoBehaviour
 		{
 			return;
 		}
-		if (Artifact.IsUnlocked || Artifact.ArtifactGroup.IsAvailable(Artifact))
+		if (Artifact.IsUnlocked || isAvailable)
 		{
 			ArtifactDisplayProgressUI.gameObject.SetActiveSmart(newState: false);
 			return;
@@ -82,7 +82,7 @@ public class ArtifactRoomDisplay : MonoBehaviour
 		}
 	}
 
-	private void Show(bool isUnlocked)
+	private void Show()
 	{
 		if (ImageDisplay == null)
 		{
@@ -100,10 +100,10 @@ public class ArtifactRoomDisplay : MonoBehaviour
 			return;
 		}
 		ImageDisplay.enabled = true;
-		ImageDisplay.color = isUnlocked ? initialImageColor : new Color(initialImageColor.r, initialImageColor.g, initialImageColor.b, initialImageColor.a * 0.45f);
+		ImageDisplay.color = initialImageColor;
 		if (Light != null)
 		{
-			Light.SetActiveSmart(isUnlocked);
+			Light.SetActiveSmart(newState: true);
 		}
 		RestoreImageScale();
 	}
@@ -170,7 +170,7 @@ public class ArtifactRoomDisplay : MonoBehaviour
 		{
 			return;
 		}
-		bool flag = Artifact.ArtifactGroup != null && Singleton<RoomContent>.Current != null && RoomContent.SameGroup(Singleton<RoomContent>.Current.CurrentlyShownGroup, Artifact.ArtifactGroup);
+		bool flag = Artifact.IsUnlocked && Artifact.ArtifactGroup != null && Singleton<RoomContent>.Current != null && RoomContent.SameGroup(Singleton<RoomContent>.Current.CurrentlyShownGroup, Artifact.ArtifactGroup);
 		foreach (BoxCollider collider in Colliders)
 		{
 			if (collider.enabled != flag)

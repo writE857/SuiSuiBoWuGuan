@@ -134,6 +134,7 @@ public class Hammer : Singleton<Hammer>
 	private void Start()
 	{
 		Rigidbody = GetComponent<Rigidbody>();
+		int hammerLayer = SphereCollider != null ? SphereCollider.gameObject.layer : gameObject.layer;
 		int brokenLayer = LayerMask.NameToLayer("Broken");
 		if (brokenLayer >= 0)
 		{
@@ -142,6 +143,10 @@ public class Hammer : Singleton<Hammer>
 		else if (BrokenLayer < 0 || BrokenLayer > 31)
 		{
 			BrokenLayer = 7;
+		}
+		if (hammerLayer >= 0 && BrokenLayer >= 0)
+		{
+			Physics.IgnoreLayerCollision(hammerLayer, BrokenLayer, true);
 		}
 		lastTime = Time.time;
 		HammerAnimator hammerAnimator = HammerAnimator;
@@ -259,7 +264,6 @@ public class Hammer : Singleton<Hammer>
 	private List<DamageTarget> GetDamageTargets()
 	{
 		damageTargetsBuffer.Clear();
-		damageTargetIndexBuffer.Clear();
 		Vector3 position = DamageOrigin;
 		float activeRadius = Mathf.Max(radius, 0.001f);
 		float activeDepth = Mathf.Max(maxDepth, 0.001f);
@@ -268,17 +272,18 @@ public class Hammer : Singleton<Hammer>
 		CubeModel cubeModel = currentBrick != null ? currentBrick.CubeModel : null;
 		if (cubeModel != null && !currentBrick.IsFull)
 		{
-			CubePiece[] brokenPieces = cubeModel.GetBrokenPieces();
-			for (int i = 0; brokenPieces != null && i < brokenPieces.Length; i++)
+			List<CubePiece> brokenPieces = cubeModel.GetActiveBrokenPieces();
+			for (int i = 0; brokenPieces != null && i < brokenPieces.Count; i++)
 			{
 				CubePiece piece = brokenPieces[i];
 				if (piece != null)
 				{
-					AddDamageTarget(piece, piece.HitPointFor(position), position, activeRadius, activeDepth);
+					AddDamageTargetUnchecked(piece, piece.HitPointFor(position), position, activeRadius, activeDepth);
 				}
 			}
 			return damageTargetsBuffer;
 		}
+		damageTargetIndexBuffer.Clear();
 		int count = Physics.OverlapSphereNonAlloc(position, activeRadius + SurfacePadding, overlapHits, HammerLayerMask, QueryTriggerInteraction.Ignore);
 		for (int i = 0; i < count; i++)
 		{
@@ -290,6 +295,28 @@ public class Hammer : Singleton<Hammer>
 			AddDamageTarget(collider.GetComponentInParent<CubePiece>(), collider.ClosestPoint(position), position, activeRadius, activeDepth);
 		}
 		return damageTargetsBuffer;
+	}
+
+	private void AddDamageTargetUnchecked(CubePiece piece, Vector3 hitPoint, Vector3 origin, float activeRadius, float activeDepth)
+	{
+		if (piece == null || !piece.IsAlive)
+		{
+			return;
+		}
+		Vector3 offset = hitPoint - origin;
+		float horizontalDistance = offset.X0Z().magnitude;
+		float depth = Mathf.Max(0f, origin.y - hitPoint.y);
+		if (!piece.HitAnyway && (horizontalDistance > activeRadius + SurfacePadding || depth > activeDepth + SurfacePadding))
+		{
+			return;
+		}
+		damageTargetsBuffer.Add(new DamageTarget
+		{
+			piece = piece,
+			hitPoint = hitPoint,
+			horizontalDistance = horizontalDistance,
+			depth = depth
+		});
 	}
 
 	private void AddDamageTarget(CubePiece piece, Vector3 hitPoint, Vector3 origin, float activeRadius, float activeDepth)
