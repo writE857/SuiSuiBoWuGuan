@@ -263,6 +263,22 @@ public class Hammer : Singleton<Hammer>
 		Vector3 position = DamageOrigin;
 		float activeRadius = Mathf.Max(radius, 0.001f);
 		float activeDepth = Mathf.Max(maxDepth, 0.001f);
+		BrickTable brickTable = Singleton<BrickTable>.Current;
+		Brick currentBrick = brickTable != null ? brickTable.CurrentBrick : null;
+		CubeModel cubeModel = currentBrick != null ? currentBrick.CubeModel : null;
+		if (cubeModel != null && !currentBrick.IsFull)
+		{
+			CubePiece[] brokenPieces = cubeModel.GetBrokenPieces();
+			for (int i = 0; brokenPieces != null && i < brokenPieces.Length; i++)
+			{
+				CubePiece piece = brokenPieces[i];
+				if (piece != null)
+				{
+					AddDamageTarget(piece, piece.HitPointFor(position), position, activeRadius, activeDepth);
+				}
+			}
+			return damageTargetsBuffer;
+		}
 		int count = Physics.OverlapSphereNonAlloc(position, activeRadius + SurfacePadding, overlapHits, HammerLayerMask, QueryTriggerInteraction.Ignore);
 		for (int i = 0; i < count; i++)
 		{

@@ -126,9 +126,44 @@ public class Loot : MonoBehaviour
 	public List<Collider> GetCollidersInside()
 	{
 		Bounds bounds = MeshCollider.bounds;
-		Collider[] array = Physics.OverlapBox(bounds.center, bounds.extents, Quaternion.identity, LayerMask, QueryTriggerInteraction.Ignore);
 		others.Clear();
 		othersRaw.Clear();
+		BrickTable brickTable = Singleton<BrickTable>.Current;
+		Brick currentBrick = brickTable != null ? brickTable.CurrentBrick : null;
+		CubeModel cubeModel = currentBrick != null ? currentBrick.CubeModel : null;
+		if (cubeModel != null)
+		{
+			CubePiece[] pieces = cubeModel.GetBrokenPieces();
+			for (int i = 0; pieces != null && i < pieces.Length; i++)
+			{
+				CubePiece component = pieces[i];
+				if (component == null || !component.IsAlive)
+				{
+					continue;
+				}
+				BoxCollider col = component.BoxCollider;
+				if (col == null)
+				{
+					continue;
+				}
+				Vector3 point = component.HitPointFor(MeshCollider.bounds.center);
+				if (!bounds.Contains(point))
+				{
+					continue;
+				}
+				othersRaw.Add(col);
+				if (IsPointInsideMeshVolume(MeshCollider, point))
+				{
+					others.Add(col);
+					component.OnBroken = (UnityAction)Delegate.Combine(component.OnBroken, (UnityAction)delegate
+					{
+						OnStonePieceBroken(col);
+					});
+				}
+			}
+			return others;
+		}
+		Collider[] array = Physics.OverlapBox(bounds.center, bounds.extents, Quaternion.identity, LayerMask, QueryTriggerInteraction.Ignore);
 		Collider[] array2 = array;
 		foreach (Collider col in array2)
 		{
@@ -137,10 +172,14 @@ public class Loot : MonoBehaviour
 				continue;
 			}
 			othersRaw.Add(col);
-			if (IsColliderInsideMeshVolume(MeshCollider, col))
+			if (IsPointInsideMeshVolume(MeshCollider, col.transform.position))
 			{
 				others.Add(col);
 				CubePiece component = col.GetComponent<CubePiece>();
+				if (component == null)
+				{
+					continue;
+				}
 				component.OnBroken = (UnityAction)Delegate.Combine(component.OnBroken, (UnityAction)delegate
 				{
 					OnStonePieceBroken(col);
@@ -164,18 +203,9 @@ public class Loot : MonoBehaviour
 		}
 	}
 
-	private bool IsColliderInsideMeshVolume(MeshCollider mesh, Collider other)
+	private bool IsPointInsideMeshVolume(MeshCollider mesh, Vector3 point)
 	{
-		_ = other.bounds;
-		Vector3[] array = new Vector3[1] { other.transform.position };
-		foreach (Vector3 vector in array)
-		{
-			if (Vector3.Distance(mesh.ClosestPoint(vector), vector) < 0.001f)
-			{
-				return true;
-			}
-		}
-		return false;
+		return Vector3.Distance(mesh.ClosestPoint(point), point) < 0.001f;
 	}
 
 	private void OnEnable()

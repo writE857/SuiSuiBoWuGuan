@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Brick : MonoBehaviour
@@ -18,10 +19,25 @@ public class Brick : MonoBehaviour
 
 	public CubeModel CubeModel;
 
+	public bool IsLootGenerated;
+
 	public void ChangeState(bool _isFull)
+	{
+		ChangeState(_isFull, checkInitialLootOverlap: true);
+	}
+
+	public void ChangeState(bool _isFull, bool checkInitialLootOverlap)
 	{
 		IsFull = _isFull;
 		UpdateVisuals();
+		if (checkInitialLootOverlap)
+		{
+			CheckInitialLootOverlaps();
+		}
+	}
+
+	public void CheckInitialLootOverlaps()
+	{
 		for (int i = 0; i < LootGenerator.Loots.Count; i++)
 		{
 			LootGenerator.Loots[i].CheckInitialOverlap();
@@ -30,7 +46,6 @@ public class Brick : MonoBehaviour
 
 	public void UpdateVisuals()
 	{
-		Physics.SyncTransforms();
 		Instance.Preview.SetActiveSmart(IsFull);
 		Instance.Broken.SetActiveSmart(!IsFull);
 		if (!IsFull)
@@ -59,7 +74,29 @@ public class Brick : MonoBehaviour
 		LootGenerator.ArtifactGroup = Instance.ArtifactGroup;
 		LootGenerator.BoundsObject = Instance.Preview.transform;
 		LootGenerator.Parent = LootParent;
-		LootGenerator.GenerateLoot();
+		LootGenerator.BricksBoughtAtGeneration = SaveManager.Current != null ? SaveManager.Current.SaveData.BricksBought : -1;
 		CubeModel = Instance;
+	}
+
+	public void GenerateLoot()
+	{
+		if (IsLootGenerated)
+		{
+			return;
+		}
+		UnityEngine.Random.InitState(Seed);
+		LootGenerator.GenerateLoot();
+		IsLootGenerated = true;
+	}
+
+	public IEnumerator GenerateLootAsync(int itemsPerFrame)
+	{
+		if (IsLootGenerated)
+		{
+			yield break;
+		}
+		UnityEngine.Random.InitState(Seed);
+		yield return LootGenerator.GenerateLootAsync(itemsPerFrame);
+		IsLootGenerated = true;
 	}
 }

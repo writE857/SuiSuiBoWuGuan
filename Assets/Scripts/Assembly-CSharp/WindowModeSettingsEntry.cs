@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WindowModeSettingsEntry : SettingsEntryLogic
 {
-	private List<string> values = new List<string> { "全屏", "窗口" };
+	private List<string> values = new List<string> { "默认全屏" };
 
 	protected override void InitOptions()
 	{
@@ -13,13 +13,6 @@ public class WindowModeSettingsEntry : SettingsEntryLogic
 
 	protected override void _Apply()
 	{
-		if (SaveIndex == 0)
-		{
-			Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-		}
-		else if (SaveIndex == 1)
-		{
-			Screen.fullScreenMode = FullScreenMode.Windowed;
-		}
+		// Project/player settings own fullscreen behavior for WebGL wrappers and APK builds.
 	}
 }

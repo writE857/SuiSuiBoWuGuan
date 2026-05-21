@@ -14,6 +14,8 @@ public class CubePiece : MonoBehaviour
 
 	public PieceDeath PieceDeath;
 
+	private BoxCollider boxCollider;
+
 	private int brokenLayerIndex;
 
 	private bool isDead;
@@ -27,6 +29,28 @@ public class CubePiece : MonoBehaviour
 	public bool IsAlive => hp > 0f;
 
 	public bool IsPreparedForBreak => body != null && PieceDeath != null;
+
+	public BoxCollider BoxCollider
+	{
+		get
+		{
+			if (boxCollider == null)
+			{
+				boxCollider = GetComponent<BoxCollider>();
+			}
+			return boxCollider;
+		}
+	}
+
+	public Vector3 HitPointFor(Vector3 origin)
+	{
+		BoxCollider collider = BoxCollider;
+		if (collider == null)
+		{
+			return base.transform.position;
+		}
+		return base.transform.TransformPoint(collider.center);
+	}
 
 	public void PrepareBreakComponents(PieceDeath template)
 	{
@@ -61,6 +85,11 @@ public class CubePiece : MonoBehaviour
 				if (!IsPreparedForBreak)
 				{
 					PrepareBreakComponents(Singleton<Hammer>.Current != null ? Singleton<Hammer>.Current.PieceDeath : null);
+				}
+				BoxCollider collider = BoxCollider;
+				if (collider != null)
+				{
+					collider.enabled = true;
 				}
 				body.detectCollisions = true;
 				body.isKinematic = false;

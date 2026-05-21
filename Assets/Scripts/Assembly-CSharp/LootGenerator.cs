@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -29,6 +30,9 @@ public class LootGenerator : Singleton<LootGenerator>
 	public int StartAllLootCount;
 
 	public int StartCollectibleCount;
+
+	[System.NonSerialized]
+	public int BricksBoughtAtGeneration = -1;
 
 	private List<Vector3> PointsLeft = new List<Vector3>();
 
@@ -81,6 +85,7 @@ public class LootGenerator : Singleton<LootGenerator>
 		placementBounds.size = size;
 		Parent.Clear();
 		Loots.Clear();
+		Artifacts.Clear();
 		preLoots.Clear();
 		PointsLeft = GeneratePoints();
 		AddCollectionLoot();
@@ -98,6 +103,149 @@ public class LootGenerator : Singleton<LootGenerator>
 		StartCollectibleCount = Artifacts.Count;
 	}
 
+	public IEnumerator GenerateLootAsync(int itemsPerFrame)
+	{
+		itemsPerFrame = Mathf.Max(1, itemsPerFrame);
+		MeshRenderer = BoundsObject.GetComponent<MeshRenderer>();
+		placementBounds = MeshRenderer.bounds;
+		Vector3 size = placementBounds.size;
+		size -= BoundsMargin;
+		placementBounds.size = size;
+		Parent.Clear();
+		Loots.Clear();
+		Artifacts.Clear();
+		preLoots.Clear();
+		PointsLeft = GeneratePoints();
+		yield return AddCollectionLootAsync(itemsPerFrame);
+		yield return AddRandomLootAsync(itemsPerFrame);
+		yield return AddLuckyCoinAsync(itemsPerFrame);
+		int num = Mathf.Min(Random.Range(1, Mathf.RoundToInt(TicketDropCount.FinalValue) + 1), Random.Range(1, Mathf.RoundToInt(TicketDropCount.FinalValue) + 1));
+		int spawnedThisFrame = 0;
+		for (int i = 0; i < num; i++)
+		{
+			AddTicket();
+			spawnedThisFrame++;
+			if (spawnedThisFrame >= itemsPerFrame)
+			{
+				spawnedThisFrame = 0;
+				yield return null;
+			}
+		}
+		StartAllLootCount = Loots.Count;
+		for (int j = 0; j < Loots.Count; j++)
+		{
+			if (Loots[j].Artifact != null)
+			{
+				Artifacts.Add(Loots[j].Artifact);
+			}
+		}
+		StartCollectibleCount = Artifacts.Count;
+	}
+
+	private IEnumerator AddCollectionLootAsync(int itemsPerFrame)
+	{
+		List<Artifact> availableArtifacts = ArtifactGroup.AvailableArtifacts;
+		if (availableArtifacts.Count == 0)
+		{
+			yield break;
+		}
+		int minInclusive = 1;
+		int num = 3;
+		num += Mathf.RoundToInt(ArtifactCountSkill.FinalValue);
+		int num2 = Mathf.Min(Random.Range(minInclusive, num + 1), Random.Range(minInclusive, num) + 1);
+		int spawnedThisFrame = 0;
+		for (int i = 0; i < num2; i++)
+		{
+			Artifact artifact = Object.Instantiate(availableArtifacts.GetRandom(), Parent);
+			artifact.Loot.SetItUp();
+			preLoots.Add(artifact.Loot);
+			Place(artifact.transform, artifactRotationRange);
+			Loots.Add(artifact.Loot);
+			spawnedThisFrame++;
+			if (spawnedThisFrame >= itemsPerFrame)
+			{
+				spawnedThisFrame = 0;
+				yield return null;
+			}
+		}
+	}
+
+	private IEnumerator AddRandomLootAsync(int itemsPerFrame)
+	{
+		if (ArtifactGroup.HighestLoot == null)
+		{
+			yield break;
+		}
+		int num = Singleton<GameResources>.Current.Loots.Entries.IndexOf(ArtifactGroup.HighestLoot);
+		num += ArtifactGroup.MaxLootTierExtra;
+		List<Loot> list = new List<Loot>();
+		int minLootTierExtra = ArtifactGroup.MinLootTierExtra;
+		num = Mathf.Clamp(num, 0, Singleton<GameResources>.Current.Loots.Entries.Count);
+		for (int i = Mathf.Clamp(minLootTierExtra, 0, num); i <= num; i++)
+		{
+			Loot loot = Singleton<GameResources>.Current.Loots.Entries.ElementAtOrDefault(i);
+			if (loot == null)
+			{
+				Debug.LogError(ArtifactGroup);
+			}
+			else
+			{
+				list.Add(loot);
+			}
+		}
+		int num2 = ArtifactGroup.MineralCount.ElementAtOrDefault(ArtifactGroup.Level - 1);
+		int num3 = num2;
+		num2 += Mathf.RoundToInt(MinMineralsSkill.FinalValue) + ArtifactGroup.ExtraMinLootCount;
+		num3 += Mathf.RoundToInt(MaxMineralsSkill.FinalValue) + ArtifactGroup.ExtraMaxLootCount;
+		int num4 = Mathf.Min(Random.Range(num2, num3 + 1), Random.Range(num2, num3) + 1);
+		int spawnedThisFrame = 0;
+		for (int j = 0; j < num4; j++)
+		{
+			Loot loot2 = Object.Instantiate(list.GetRandom(), Parent);
+			loot2.SetItUp();
+			float value = Random.value;
+			float scale = Mathf.Lerp(LootScale.x, LootScale.y, value);
+			float valueScale = Mathf.Lerp(LootValueRange.x, LootValueRange.y, value);
+			loot2.SetValue(scale, valueScale);
+			preLoots.Add(loot2);
+			Place(loot2.transform, mineralRotationRange);
+			Loots.Add(loot2);
+			spawnedThisFrame++;
+			if (spawnedThisFrame >= itemsPerFrame)
+			{
+				spawnedThisFrame = 0;
+				yield return null;
+			}
+		}
+	}
+
+	private IEnumerator AddLuckyCoinAsync(int itemsPerFrame)
+	{
+		float value = Random.value;
+		float num = LuckyCoinChanceSkill.FinalValue / 100f;
+		num *= ArtifactGroup.CoinChanceMultiplier;
+		if (value > num)
+		{
+			yield break;
+		}
+		int num2 = ((!(Random.value < DoubleCoinSpawnSkill.FinalValue / 100f)) ? 1 : 2);
+		int spawnedThisFrame = 0;
+		for (int i = 0; i < num2; i++)
+		{
+			Loot loot = Object.Instantiate(Singleton<GameResources>.Current.Loots.CoinLoot, Parent);
+			loot.SetItUp();
+			preLoots.Add(loot);
+			Place(loot.transform, coinRotationRange);
+			Loots.Add(loot);
+			spawnedThisFrame++;
+			if (spawnedThisFrame >= itemsPerFrame)
+			{
+				spawnedThisFrame = 0;
+				yield return null;
+			}
+		}
+	}
+
 	private void OnDrawGizmosSelected()
 	{
 		placementBounds = MeshRenderer.bounds;
@@ -109,8 +257,22 @@ public class LootGenerator : Singleton<LootGenerator>
 
 	private void Update()
 	{
-		Loots.RemoveAll((Loot a) => a.IsFree || a == null);
-		Artifacts.RemoveAll((Artifact a) => a.Loot.IsFree);
+		for (int i = Loots.Count - 1; i >= 0; i--)
+		{
+			Loot loot = Loots[i];
+			if (loot == null || loot.IsFree)
+			{
+				Loots.RemoveAt(i);
+			}
+		}
+		for (int j = Artifacts.Count - 1; j >= 0; j--)
+		{
+			Artifact artifact = Artifacts[j];
+			if (artifact == null || artifact.Loot == null || artifact.Loot.IsFree)
+			{
+				Artifacts.RemoveAt(j);
+			}
+		}
 	}
 
 	private void AddCollectionLoot()
@@ -197,7 +359,8 @@ public class LootGenerator : Singleton<LootGenerator>
 	private void AddTicket()
 	{
 		float num = Random.value;
-		if (SaveManager.Current.SaveData.BricksBought == 3)
+		int bricksBought = BricksBoughtAtGeneration >= 0 ? BricksBoughtAtGeneration : SaveManager.Current.SaveData.BricksBought;
+		if (bricksBought == 3)
 		{
 			num = 0f;
 		}

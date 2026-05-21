@@ -180,6 +180,17 @@ public class BrickBuyButton : MonoBehaviour, IPointerEnterHandler, IEventSystemH
 		{
 			return;
 		}
+		if (!IsCurrentRoom())
+		{
+			ShowTargetRoom();
+			return;
+		}
+		BrickTable brickTable = Singleton<BrickTable>.Current;
+		if (brickTable != null && brickTable.IsMoving)
+		{
+			PlayClickDeclined();
+			return;
+		}
 		if (Singleton<LootManager>.Current.TrySpend(ArtifactGroup.CurrentPrice) && Singleton<BrickShop>.Current.canBuy)
 		{
 			Singleton<BrickPile>.Current.AddNewRandomBrick(ArtifactGroup);
@@ -197,6 +208,22 @@ public class BrickBuyButton : MonoBehaviour, IPointerEnterHandler, IEventSystemH
 		{
 			PlayClickDeclined();
 		}
+	}
+
+	private bool IsCurrentRoom()
+	{
+		RoomContent roomContent = Singleton<RoomContent>.Current;
+		return roomContent == null || RoomContent.SameGroup(roomContent.CurrentlyShownGroup, ArtifactGroup);
+	}
+
+	private void ShowTargetRoom()
+	{
+		HoverInfo hoverInfo = Singleton<HoverInfo>.Current;
+		if (hoverInfo != null)
+		{
+			hoverInfo.CurrentHoveredArtifactGroup = ArtifactGroup;
+		}
+		PlayClickAccepted();
 	}
 
 	private void RefreshUI(bool force = false)
@@ -262,6 +289,10 @@ public class BrickBuyButton : MonoBehaviour, IPointerEnterHandler, IEventSystemH
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
+		if (eventData != null && eventData.pointerId >= 0 && Input.touchSupported)
+		{
+			return;
+		}
 		if (IsHovered || ArtifactGroup == null)
 		{
 			return;

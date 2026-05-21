@@ -7,13 +7,14 @@ public class ResolutionSettingsEntry : SettingsEntryLogic
 
 	protected override void InitOptions()
 	{
-		options = GetAvailableResolutions();
-		DefaultIndex = options.Count - 1;
+		Resolutions.Clear();
+		options = new List<string> { "默认" };
+		DefaultIndex = 0;
 	}
 
 	protected override void _Apply()
 	{
-		Screen.SetResolution(Resolutions[SaveIndex].Width, Resolutions[SaveIndex].Height, Screen.fullScreenMode);
+		// Use the platform/native resolution. Runtime SetResolution is unsafe for WebGL and mobile wrappers.
 	}
 
 	public List<string> GetAvailableResolutions()

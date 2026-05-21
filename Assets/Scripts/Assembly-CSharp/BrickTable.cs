@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
@@ -20,6 +21,10 @@ public class BrickTable : Singleton<BrickTable>
 	public AudioResource brickDropSFX;
 
 	public Transform tableTarget;
+
+	public int lootSpawnBatchSize = 2;
+
+	public int visualPrepareBatchSize = 96;
 
 	[Header("Spawn Settings")]
 	public float spawnHeight = 3f;
@@ -67,11 +72,27 @@ public class BrickTable : Singleton<BrickTable>
 
 	private void FinalizeBrick(Brick brick)
 	{
+		StartCoroutine(FinalizeBrickAsync(brick));
+	}
+
+	private IEnumerator FinalizeBrickAsync(Brick brick)
+	{
 		brick.transform.parent = Parent;
 		brick.transform.localPosition = Vector3.zero;
 		brick.transform.localRotation = Quaternion.identity;
-		brick.ChangeState(_isFull: false);
+		yield return brick.GenerateLootAsync(lootSpawnBatchSize);
+		if (brick == null)
+		{
+			yield break;
+		}
+		yield return brick.CubeModel.PrepareBrokenVisualsAsync(visualPrepareBatchSize);
+		if (brick == null)
+		{
+			yield break;
+		}
+		brick.ChangeState(_isFull: false, checkInitialLootOverlap: false);
 		CurrentBrick = brick;
+		brick.CheckInitialLootOverlaps();
 		IsMoving = false;
 	}
 
@@ -100,7 +121,12 @@ public class BrickTable : Singleton<BrickTable>
 
 	public void RemoveBricks(Brick newBrick = null)
 	{
-		Brick[] array = UnityEngine.Object.FindObjectsByType<Brick>(FindObjectsSortMode.None);
+		if (CurrentBrick != null && CurrentBrick != newBrick)
+		{
+			UnityEngine.Object.Destroy(CurrentBrick.gameObject);
+			CurrentBrick = null;
+		}
+		Brick[] array = Parent.GetComponentsInChildren<Brick>(includeInactive: true);
 		foreach (Brick brick in array)
 		{
 			if (newBrick == null || brick != newBrick)

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ public class CubeModel : MonoBehaviour
 
 	private MeshRenderer[] brokenRenderers;
 
+	private BoxCollider[] brokenColliders;
+
 	private Coroutine prepareBreakComponentsRoutine;
 
 	public int PieceCount => brokenPieces?.Length ?? 0;
@@ -24,6 +27,7 @@ public class CubeModel : MonoBehaviour
 	private void Awake()
 	{
 		CacheComponents();
+		SetBrokenCollidersEnabled(value: false);
 	}
 
 	private void CacheComponents()
@@ -40,6 +44,10 @@ public class CubeModel : MonoBehaviour
 		{
 			brokenPieces = Broken.GetComponentsInChildren<CubePiece>(includeInactive: true);
 		}
+		if (Broken != null && brokenColliders == null)
+		{
+			brokenColliders = Broken.GetComponentsInChildren<BoxCollider>(includeInactive: true);
+		}
 	}
 
 	private void ApplyMaterial(Material material)
@@ -51,24 +59,116 @@ public class CubeModel : MonoBehaviour
 	public void SetHP()
 	{
 		CacheComponents();
+		if (brokenPieces == null)
+		{
+			return;
+		}
 		for (int i = 0; i < brokenPieces.Length; i++)
 		{
-			brokenPieces[i].SetIndex();
+			if (brokenPieces[i] != null)
+			{
+				brokenPieces[i].SetIndex();
+			}
 		}
 		int currentMaxHP = ArtifactGroup.CurrentMaxHP;
 		for (int j = 0; j < brokenPieces.Length; j++)
 		{
-			brokenPieces[j].hp = currentMaxHP;
-			brokenPieces[j].maxHp = currentMaxHP;
+			if (brokenPieces[j] != null)
+			{
+				brokenPieces[j].hp = currentMaxHP;
+				brokenPieces[j].maxHp = currentMaxHP;
+			}
 		}
 	}
 
-	public void SetTierData(ArtifactGroup group)
+	public void SetTierData(ArtifactGroup group, bool prepareBroken = true)
 	{
 		ArtifactGroup = group;
-		ApplyMaterial(group.Material);
+		ApplyMaterial(Preview, group.Material);
 		ApplySize();
+		if (prepareBroken)
+		{
+			PrepareBrokenVisuals();
+		}
+	}
+
+	public void PrepareBrokenVisuals()
+	{
+		ApplyMaterial(Broken, ArtifactGroup.Material);
 		SetHP();
+	}
+
+	public IEnumerator PrepareBrokenVisualsAsync(int itemsPerFrame)
+	{
+		CacheComponents();
+		int batchSize = Mathf.Max(1, itemsPerFrame);
+		int processedThisFrame = 0;
+		if (brokenRenderers != null)
+		{
+			Material material = ArtifactGroup.Material;
+			for (int i = 0; i < brokenRenderers.Length; i++)
+			{
+				if (brokenRenderers[i] != null)
+				{
+					brokenRenderers[i].sharedMaterial = material;
+				}
+				processedThisFrame++;
+				if (processedThisFrame >= batchSize)
+				{
+					processedThisFrame = 0;
+					yield return null;
+				}
+			}
+		}
+		if (brokenPieces == null)
+		{
+			yield break;
+		}
+		int currentMaxHP = ArtifactGroup.CurrentMaxHP;
+		for (int j = 0; j < brokenPieces.Length; j++)
+		{
+			CubePiece cubePiece = brokenPieces[j];
+			if (cubePiece != null)
+			{
+				cubePiece.SetIndex();
+				cubePiece.hp = currentMaxHP;
+				cubePiece.maxHp = currentMaxHP;
+			}
+			processedThisFrame++;
+			if (processedThisFrame >= batchSize)
+			{
+				processedThisFrame = 0;
+				yield return null;
+			}
+		}
+	}
+
+	public void SetBrokenCollidersEnabled(bool value)
+	{
+		CacheComponents();
+		if (brokenColliders == null)
+		{
+			return;
+		}
+		for (int i = 0; i < brokenColliders.Length; i++)
+		{
+			if (brokenColliders[i] != null)
+			{
+				brokenColliders[i].enabled = value;
+			}
+		}
+	}
+
+	public CubePiece[] GetBrokenPieces()
+	{
+		CacheComponents();
+		return brokenPieces;
+	}
+
+	public BoxCollider[] GetBrokenColliders()
+	{
+		CacheComponents();
+		return brokenColliders;
 	}
 
 	public void BeginBreakPreparation(PieceDeath template)

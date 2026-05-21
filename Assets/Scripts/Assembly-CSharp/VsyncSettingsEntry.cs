@@ -5,13 +5,12 @@ public class VsyncSettingsEntry : SettingsEntryLogic
 {
 	protected override void InitOptions()
 	{
-		options = new List<string> { "关闭", "开启（每帧）", "开启（隔帧）" };
-		DefaultIndex = 1;
+		options = new List<string> { "关闭" };
+		DefaultIndex = 0;
 	}
 
 	protected override void _Apply()
 	{
-		QualitySettings.vSyncCount = SaveIndex;
-		Debug.Log("Vsync set to: " + SaveIndex);
+		QualitySettings.vSyncCount = 0;
 	}
 }

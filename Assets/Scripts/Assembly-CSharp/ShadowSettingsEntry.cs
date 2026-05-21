@@ -6,13 +6,15 @@ public class ShadowSettingsEntry : SettingsEntryLogic
 {
 	protected override void InitOptions()
 	{
-		options = new List<string> { "开启", "关闭" };
+		options = new List<string> { "开启" };
 		DefaultIndex = 0;
 	}
 
 	protected override void _Apply()
 	{
-		Camera.main.GetComponent<UniversalAdditionalCameraData>().renderShadows = SaveIndex == 0;
-		Debug.Log("Shadows setting applied: " + ((SaveIndex == 0) ? "On" : "Off"));
+		if (Camera.main != null && Camera.main.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData))
+		{
+			cameraData.renderShadows = true;
+		}
 	}
 }

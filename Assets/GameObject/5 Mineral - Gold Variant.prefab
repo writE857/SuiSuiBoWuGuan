@@ -149,7 +149,7 @@ MonoBehaviour:
   ValueScale: 1
   LayerMask:
     serializedVersion: 2
-    m_Bits: 2112
+    m_Bits: 64
   CanBeTaken: 0
   Artifact: {fileID: 0}
   others: []

@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class SettingsEntry : MonoBehaviour, IPointerEnterHandler, IEventSystemHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+public class SettingsEntry : MonoBehaviour, IPointerEnterHandler, IEventSystemHandler, IPointerExitHandler, IPointerDownHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler
 {
 	public int SelectedIndex;
 
@@ -140,9 +140,22 @@ public class SettingsEntry : MonoBehaviour, IPointerEnterHandler, IEventSystemHa
 		SetFocused();
 	}
 
+	public void OnPointerDown(PointerEventData eventData)
+	{
+		SelectThis(eventData);
+	}
+
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		SelectThis(eventData);
+	}
+
 	public void OnPointerExit(PointerEventData eventData)
 	{
-		SetBlurred();
+		if (!IsSelected())
+		{
+			SetBlurred();
+		}
 	}
 
 	public void OnPointerEnter(PointerEventData eventData)
@@ -155,9 +168,29 @@ public class SettingsEntry : MonoBehaviour, IPointerEnterHandler, IEventSystemHa
 		SetBlurred();
 	}
 
+	private void SelectThis(BaseEventData eventData)
+	{
+		EventSystem eventSystem = EventSystem.current;
+		if (eventSystem != null && eventSystem.currentSelectedGameObject != base.gameObject)
+		{
+			eventSystem.SetSelectedGameObject(base.gameObject, eventData);
+			return;
+		}
+		SetFocused();
+	}
+
+	private bool IsSelected()
+	{
+		EventSystem eventSystem = EventSystem.current;
+		return eventSystem != null && eventSystem.currentSelectedGameObject == base.gameObject;
+	}
+
 	private void SetFocused()
 	{
-		Singleton<AudioPool>.Current.Play(SelectedSFX, base.transform.position);
+		if (!IsFocused)
+		{
+			Singleton<AudioPool>.Current.Play(SelectedSFX, base.transform.position);
+		}
 		IsFocused = true;
 		LeftCG.alpha = 1f;
 		LeftCG.blocksRaycasts = true;
